@@ -433,7 +433,13 @@
                                             <td class="align-middle">{{ $customer_bank->no }}</td>
                                             <td class="align-middle">{{ $customer_bank->name_account }}</td>
                                             <td class="align-middle">{{ $customer_bank->name_bank }}</td>
-                                            <td class="align-middle">{{ $customer_bank->customers->username }}</td>
+                                            <td class="align-middle">
+                                                @if ($customer_bank->customers != null)
+                                                    {{ $customer_bank->customers->username }}
+                                                @else
+                                                    ไม่มีข้อมูล
+                                                @endif
+                                            </td>
                                             <td class="align-middle" align="center">
                                                 <a href="javascript:void(0)" class="btn btn-warning"
                                                     data-id="{{ $customer_bank->id }}" onclick="editPost(event.target)"

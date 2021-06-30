@@ -52,11 +52,11 @@
                         },
                         success: function(res) {
                             let status;
-                                if (res.data.status == '0') {
-                                    status = "เปิดขาย"
-                                } else {
-                                    status = "ไม่เปิดขาย"
-                                }
+                            if (res.data.status == '0') {
+                                status = "เปิดขาย"
+                            } else {
+                                status = "ไม่เปิดขาย"
+                            }
                             console.log("สำเร็จ");
                             if (id != "") {
                                 $("#table_crud #row_" + id + " td:nth-child(3)").html(res.data.no);
@@ -452,8 +452,14 @@
 
                                             </td>
                                             <td class="align-middle">{{ $lottery->price }}</td>
-                                            <td class="align-middle">{{ $lottery->users->fname }}
-                                                {{ $lottery->users->lname }}</td>
+                                            <td class="align-middle">
+                                                @if ($lottery->users != NULL)
+                                                    {{ $lottery->users->fname }}
+                                                    {{ $lottery->users->lname }}
+                                                @else
+                                                    ไม่มีข้อมูล
+                                                @endif
+                                            </td>
 
                                             <td class="align-middle" align="center">
                                                 <a href="javascript:void(0)" class="btn btn-warning"

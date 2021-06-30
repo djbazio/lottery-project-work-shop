@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="{{ asset('adminlte/plugins/select2/css/select2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('adminlte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
 
+  
     <style>
         .custom-file-upload {
             border: 1px solid #ccc;
@@ -108,7 +109,7 @@
     <!-- jQuery -->
     <script src="{{ asset('adminlte/plugins/jquery/jquery.min.js') }}"></script>
     <!-- Select2 -->
-    <script src="{{asset('adminlte/plugins/select2/js/select2.full.min.js')}}"></script>
+    <script src="{{ asset('adminlte/plugins/select2/js/select2.full.min.js') }}"></script>
 
     <!-- Bootstrap 4 -->
     <script src="{{ asset('adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>

@@ -1,84 +1,88 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">{{ __('ล็อกอิน') }}</div>
 
-                    <div class="card-body">
-                        @if (session('error'))
-                            <div class="alert alert-danger alert-dismissible fade show">
-                                <strong>Error!</strong> {{ session('error') }}
-                                <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <div class="login-box">
+        <!-- /.login-logo -->
+        <div class="card card-outline card-primary">
+            <div class="card-header text-center">
+                <a href="{{ url('/') }}" class="h1"><b>Lottery-Website</b></a>
+            </div>
+            <div class="card-body">
+                <p class="login-box-msg">ล็อกอินเพื่อเข้าใช้งานเว็บไซต์</p>
+
+                <form method="POST" action="{{ route('login') }}">
+                    @csrf
+                    <div class="input-group mb-3">
+                        <input id="username" type="text" class="form-control @error('username') is-invalid @enderror"
+                            name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-user"></span>
                             </div>
-                        @endif
-                        <form method="POST" action="{{ route('login') }}">
-                            @csrf
-
-                            <div class="form-group row">
-                                <label for="username"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('ชื่อผู้ใช้') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="username" type="text"
-                                        class="form-control @error('username') is-invalid @enderror" name="username"
-                                        value="{{ old('username') }}" required autocomplete="username" autofocus>
-
-                                    @error('username')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
+                            name="password" required autocomplete="current-password">
+                        {{-- @error('password')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror --}}
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
                             </div>
-
-                            <div class="form-group row">
-                                <label for="password"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('รหัสผ่าน') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="password" type="password"
-                                        class="form-control @error('password') is-invalid @enderror" name="password"
-                                        required autocomplete="current-password">
-                                    @error('password')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            {{-- <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
+                        </div>
+                    </div>
+                    @if (session('error'))
+                        <div class="alert alert-danger alert-dismissible fade show">
+                            <strong>Error!</strong> {{ session('error') }}
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        </div>
+                    @endif
+                    <div class="row">
+                        {{-- <div class="col-8">
+                            <div class="icheck-primary">
+                                <input type="checkbox" id="remember">
+                                <label for="remember">
+                                    Remember Me
+                                </label>
                             </div>
                         </div> --}}
-
-                            <div class="form-group row mb-0">
-                                <div class="col-md-8 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        {{ __('Login') }}
-                                    </button>
-
-                                    {{-- @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif --}}
-                                </div>
-                            </div>
-                        </form>
+                        <!-- /.col -->
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary btn-block">
+                                <i class="fas fa-sign-in-alt mr-2"></i>
+                                เข้าสู่ระบบ</button>
+                        </div>
+                        <!-- /.col -->
                     </div>
-                </div>
+                </form>
+
+                {{-- <div class="social-auth-links text-center mt-2 mb-3">
+                    <a href="#" class="btn btn-block btn-primary">
+                        <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
+                    </a>
+                    <a href="#" class="btn btn-block btn-danger">
+                        <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
+                    </a>
+                </div> --}}
+                <!-- /.social-auth-links -->
+
+                {{-- <p class="mb-1">
+                    <a href="forgot-password.html">I forgot my password</a>
+                </p> --}}
+
+                <a href="{{ route('register') }}" class="btn btn-block btn-danger mt-2">
+                    <i class="fab fa-wpforms mr-2"></i> สมัครสมาชิก
+                </a>
             </div>
+            <!-- /.card-body -->
         </div>
+        <!-- /.card -->
     </div>
+
+
 @endsection
