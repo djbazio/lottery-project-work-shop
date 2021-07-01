@@ -1,0 +1,35 @@
+html, body{
+    overflow-x: hidden;
+}
+a{
+    transition: all .3s ease-in-out;
+    &:hover{
+        text-decoration: none;
+    }
+}
+ul{
+    margin-bottom: 0;
+    padding: 0;
+    list-style: none;
+}
+.slick-slide{
+    outline: 0;
+}
+input, textarea, select{
+    outline: 0;
+    transition: all .3s ease-in-out;
+}
+input[type='submit']{
+    border: 0;
+}
+button{
+    border: 0;
+    transition: all .3s ease-in-out;
+    outline: 0;
+    &:focus{
+        outline: 0;
+    }
+}
+.slick-slider a{
+    outline: 0;
+}

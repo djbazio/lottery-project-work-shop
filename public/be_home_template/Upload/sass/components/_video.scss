@@ -1,0 +1,233 @@
+/*
+======================================== 
+  25 - Video Section
+========================================
+*/
+.video-layout-one {
+	background-image: linear-gradient(to left, rgba(42, 55, 76, .97), rgba(42, 55, 76, .97)), url('https://via.placeholder.com/1920x800/eee/fff');
+	background-size: cover;
+	background-repeat: no-repeat;
+	position: relative;
+	.video-carousel {
+		width: 130%;
+		left: -15%;
+	}
+	.video-tt{
+		padding: 0 15px;
+	}
+	.video-item{
+		position: relative;
+		&:before{
+			content: "";
+			width: 100%;
+			height: 100%;
+			background: #2a374c;
+			opacity: 0.8;
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+		img{
+			width: 100%;
+		}
+		.icons{
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translateX(-50%) translateY(-50%);
+			opacity: 0;
+			z-index: 99;
+			a{
+				background-color: #fff;
+				width: 108px;
+				height: 108px;
+				border-radius: 50%;
+				text-align: center;
+				line-height: 108px;
+				svg{
+					width: 80px;
+					height: 80px;
+				}
+			}
+		}
+	}
+	.video-tt.slick-center{
+		.video-item{
+			&:before{
+				display: none;
+			}
+			.icons{
+				opacity: 1;
+				z-index: 11;
+				transition: all .7s ease-in;
+			}
+		}
+	}
+	.video-arrow{
+		width: 36%;
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translateX(-50%) translateY(-50%);
+		z-index: 0;
+		color: #fff;
+		font-size: 40px;
+		line-height: 0;
+		i{
+			cursor: pointer;
+		}
+		.flaticon-right{
+			float: right;
+		}
+	}
+}
+
+.video-layout-two{
+	position: relative;
+	img{
+		width: 100%;
+	}
+	.hover{
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: rgba($color: #000000, $alpha: .20);
+	}
+	.playbutton{
+		border: 3px solid rgba($color: #fff, $alpha: .30);
+		border-radius: 50%;
+		position: relative;
+		width: 172px;
+		height: 172px;
+		display: inline-block;
+		text-align: center;
+		line-height: 172px;
+		&:before{
+			content: "";
+			width: 172px;
+			height: 172px;
+			border-right: 3px solid #fff;
+			border-radius: 50%;
+			position: absolute;
+			right: -3px;
+			top: -3px;
+			transform: rotate(180deg);
+			animation: rotate-center 4s infinite linear;
+			animation-play-state: paused;
+		}
+		svg{
+			width: 80px;
+			height: 80px;
+		}
+		.triangle{
+			stroke: #fff;
+		}
+		&:hover{
+			&:before{
+				animation-play-state: running;
+			}
+		}
+	}
+	@keyframes rotate-center {
+		0% {
+		  -webkit-transform: rotate(180deg);
+		  transform: rotate(180deg); }
+		100% {
+		  -webkit-transform: rotate(-180deg);
+		  transform: rotate(-180deg); } }
+}
+
+.video-layout-three{
+	position: relative;
+	overflow: hidden;
+	&:before{
+		content: "";
+		width: 100%;
+		height: 100%;
+		background: url('../img/property-bg-2.png') no-repeat;
+		background-position: center -200px;
+		position: absolute;
+		left: 0;
+		top: 0;
+		// opacity: .1;
+	}
+	.video-slider{
+		margin-bottom: 40px;
+	}
+	.slider-item{
+		background: #fff;
+		box-shadow: 0px 0px 30px 0px rgba(111, 120, 142, 0.1);
+		margin: 30px;
+	}
+	.video-left{
+		position: relative;
+		img{
+			width: 100%;
+		}
+		.playbutton{
+			width: 80px;
+			height: 80px;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translateX(-50%) translateY(-50%);
+			border-radius: 50%;
+			background: #fff;
+			line-height: 80px;
+			text-align: center;
+			&:before{
+				content: "";
+				width: 100px;
+				height: 100px;
+				background: rgba($color: #fff, $alpha: .40);
+				position: absolute;
+				left: -10px;
+				top: -10px;
+				border-radius: 50%;
+			}
+			svg{
+				width: 70px;
+				height: 70px;
+				position: relative;
+				z-index: 2;
+			}
+		}
+	}
+	.video-right{
+		padding: 0 30px 0 0;
+		p:first-child{
+			text-transform: uppercase;
+		}
+		h3{
+			margin-bottom: 20px;
+		}
+		p i{
+			margin-right: 8px;
+		}
+	}
+
+	.slick-dots {
+		bottom: -40px;
+		li{
+			width: 15px;
+			height: 15px;
+			&.slick-active button{
+				background: $primary-color;
+			}
+			button{
+				background: rgba($color: $primary-color, $alpha: .37);
+				width: 15px;
+				height: 15px;
+				border-radius: 50%;
+				&:before{
+					display: none;
+				}		
+			}
+		}
+	}
+}

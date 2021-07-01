@@ -1,0 +1,32 @@
+/*
+======================================== 
+  20 - Fun Facts Section
+========================================
+*/
+
+.skill-layout-one{
+	.ldBar {
+		width: 160px !important;
+		height: 160px !important;
+		margin: 0 auto;
+		.mainline{
+			stroke-width: 4px;
+			stroke: $primary-color;
+		}
+		.baseline{
+			stroke-width: 4px;
+		}
+		.ldBar-label{
+			color: $primary-color;
+			font-size: 23px;
+			font-weight: 600;
+		}
+	}
+	.skill-item{
+		padding: 0 30px;
+		h4{
+			text-transform: uppercase;
+			padding: 20px 0 5px;
+		}
+	}
+}

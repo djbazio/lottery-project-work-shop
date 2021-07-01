@@ -1,0 +1,1134 @@
+<!doctype html>
+<!--[if IE 6 ]><html lang="en-us" class="ie6"> <![endif]-->
+<!--[if IE 7 ]><html lang="en-us" class="ie7"> <![endif]-->
+<!--[if IE 8 ]><html lang="en-us" class="ie8"> <![endif]-->
+<!--[if (gt IE 7)|!(IE)]><!-->
+<html lang="en-us">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Behome - Real Estate HTML Template</title>
+
+    <meta name="description" content="">
+    <meta name="author" content="WPequal">
+    <meta name="copyright" content="WPequal">
+    <meta name="generator" content="Documenter v2.0 http://rxa.li/documenter">
+    <meta name="date" content="2019-12-13T00:00:00+01:00">
+
+    <link rel="stylesheet" href="assets/css/documenter_style.css" media="all">
+    <link rel="stylesheet" href="flaticon/flaticon.css" media="all">
+    <link rel="stylesheet" href="assets/js/google-code-prettify/prettify.css" media="screen">
+    <script src="assets/js/google-code-prettify/prettify.js"></script>
+
+    <link rel="stylesheet" href="assets/css/custom.css" media="screen">
+
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/cufon.js"></script>
+    <script src="assets/js/font.js"></script>
+    <script>
+        Cufon.replace("h1, h2, h3, h4, h5, h6");
+    </script>
+    <script src="assets/js/jquery.scrollTo.js"></script>
+    <script src="assets/js/jquery.easing.js"></script>
+
+    <script>
+        document.createElement('section');
+        var duration = '450',
+            easing = 'easeOutExpo';
+    </script>
+    <script src="assets/js/script.js"></script>
+
+    <style>
+        html {
+            background-color: #EEEEEE;
+            color: #383838;
+        }
+
+        ::-moz-selection {
+            background: #333636;
+            color: #fb5252;
+        }
+
+        ::selection {
+            background: #333636;
+            color: #fb5252;
+        }
+
+        #documenter_sidebar #documenter_logo {
+            background-image: url(assets/images/logo.png);
+        }
+
+        a {
+            color: #fb5252;
+        }
+
+        .btn {
+            border-radius: 3px;
+        }
+
+        .btn-primary {
+            background-image: -moz-linear-gradient(top, #fb5252, #006673);
+            background-image: -ms-linear-gradient(top, #fb5252, #006673);
+            background-image: -webkit-gradient(linear, 0 0, 0 #fb5252, from(#343838), to(#006673));
+            background-image: -webkit-linear-gradient(top, #fb5252, #006673);
+            background-image: -o-linear-gradient(top, #fb5252, #006673);
+            background-image: linear-gradient(top, #fb5252, #006673);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fb5252', endColorstr='#006673', GradientType=0);
+            border-color: #006673 #006673 #bfbfbf;
+            color: #FFFFFF;
+        }
+
+        .btn-primary:hover,
+        .btn-primary:active,
+        .btn-primary.active,
+        .btn-primary.disabled,
+        .btn-primary[disabled] {
+            border-color: #fb5252 #fb5252 #bfbfbf;
+            background-color: #006673;
+        }
+
+        hr {
+            border-top: 1px solid #D4D4D4;
+            border-bottom: 1px solid #FFFFFF;
+        }
+
+        #documenter_sidebar,
+        #documenter_sidebar ul a {
+            background-color: #343838;
+            color: #FFFFFF;
+        }
+
+        #documenter_sidebar ul a {
+            -webkit-text-shadow: 1px 1px 0px #494F4F;
+            -moz-text-shadow: 1px 1px 0px #494F4F;
+            text-shadow: 1px 1px 0px #494F4F;
+        }
+
+        #documenter_sidebar ul {
+            border-top: 1px solid #212424;
+        }
+
+        #documenter_sidebar ul a {
+            border-top: 1px solid #494F4F;
+            border-bottom: 1px solid #212424;
+            color: #FFFFFF;
+        }
+
+        #documenter_sidebar ul a:hover {
+            background: #333636;
+            color: #fb5252;
+            border-top: 1px solid #333636;
+        }
+
+        #documenter_sidebar ul a.current {
+            background: #333636;
+            color: #fb5252;
+            border-top: 1px solid #333636;
+        }
+
+        #documenter_copyright {
+            display: block !important;
+            visibility: visible !important;
+        }
+
+        #documenter_sidebar ul a {
+            padding: 6px 30px 7px 0;
+        }
+        #glyphs {
+        /* border-bottom: 1px solid #ccc; */
+        padding: 2em 0;
+        text-align: center;
+    }
+    .glyph {
+        display: inline-block;
+        width: 11em;
+        margin: 1em;
+        text-align: center;
+        vertical-align: top;
+        background: #FFF;
+    }
+    .glyph .glyph-icon {
+        padding: 10px;
+        display: block;
+        font-family:"Flaticon";
+        font-size: 64px;
+        line-height: 1;
+    }
+    .glyph .glyph-icon:before {
+        font-size: 64px;
+        color: #222;
+        margin-left: 0;
+    }
+    .class-name {
+        font-size: 0.85em;
+        background-color: #222;
+        color: #fff;
+        border-radius: 4px 4px 0 0;
+        padding: 0.5em;
+        color: #FFFF99;
+        font-family: Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New, monospace;
+    }
+    .author-name {
+        font-size: 0.8em;
+        background-color: #fcfcfd;
+        border: 1px solid #DEDEE4;
+        border-top: 0;
+        border-radius: 0 0 4px 4px;
+        padding: 0.5em;
+    }
+    .class-name:last-child {
+        font-size: 10px;
+        color:#888;
+    }
+    .class-name:last-child a {
+        font-size: 10px;
+        color:#555;
+    }
+    .class-name:last-child a:hover {
+        color:#a9fd00;
+    }
+    .glyph > input {
+        display: block;
+        width: 100px;
+        margin: 5px auto;
+        text-align: center;
+        font-size: 12px;
+        cursor: text;
+    }
+    .glyph > input.icon-input {
+        font-family:"Flaticon";
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    .attribution .title {
+        margin-top: 2em;
+    }
+    .attribution textarea {
+        background-color: #fcfcfd;
+        padding: 1em;
+        border: none;
+        box-shadow: none;
+        border: 1px solid #DEDEE4;
+        border-radius: 4px;
+        resize: none;
+        width: 100%;
+        height: 150px;
+        font-size: 0.8em;
+        font-family: Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New, monospace;
+        -webkit-appearance: none;
+    }
+    .iconsuse {
+        margin: 2em auto;
+        text-align: center;
+        max-width: 1200px;
+    }
+    .iconsuse:after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+    .iconsuse .image {
+        float: left;
+        width: 25%;
+        padding: 0 1em;
+    }
+    .iconsuse .image p {
+        margin-bottom: 1em;
+    }
+    .iconsuse .image span {
+        display: block;
+        font-size: 0.65em;
+        background-color: #222;
+        color: #fff;
+        border-radius: 4px;
+        padding: 0.5em;
+        color: #FFFF99;
+        margin-top: 1em;
+        font-family: Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New, monospace;
+    }
+    </style>
+
+</head>
+
+<body class="documenter-project-Cleanit">
+    <div id="documenter_sidebar">
+        <a href="#documenter_cover" id="documenter_logo"></a>
+        <ul id="documenter_nav">
+            <li><a class="current" href="#documenter_cover">Start</a></li>
+
+            <li><a href="#template_features" title="Template Features">Template Features</a></li>
+            <li><a href="#installing_template" title="Installing Template.">Installing Template.</a></li>
+            <li><a href="#html_structure" title="HTML Structure">HTML Structure</a></li>
+            <li><a href="#head_css_structure" title="HEAD/CSS Structure">HEAD/CSS Structure</a></li>
+            <li><a href="#javascript" title="JavaScript">JavaScript</a></li>
+            <li><a href="#font_icons" title="Font Icons">Font Icons</a></li>
+            <li><a href="#source_and_credit" title="Source and Credit">Source and Credit</a></li>
+            <li><a href="#final_words" title="Final Words">Final Words</a></li>
+
+        </ul>
+        <div id="documenter_copyright">Copyright WPequal 2020<br>
+            made with the <a href="http://rxa.li/documenter">Documenter v2.0</a>
+        </div>
+    </div>
+    <div id="documenter_content">
+        <section id="documenter_cover">
+            <h1>Behome</h1>
+            <h2>Real Estate HTML Template</h2>
+            <div id="documenter_buttons">
+
+            </div>
+            <hr>
+            <ul>
+                <li>created: 09/06/2020</li>
+                <li>latest update: 09/06/2020</li>
+                <li>by: WPequal</li>
+                <li><a href="http://themeforest.net/user/WPequal">themeforest.net/user/WPequal</a></li>
+                <li>email: <a href="mailto:wpequal@gmail.com">wpequal@gmail.com</a></li>
+            </ul>
+            <p>We would happily welcome feedback from you on how, if anywhere, you would like this documentation
+                improved. If you would find anything a little bit easier and more helpful if we went into more detail,
+                or explained something a little better - we'd be happy to hear it. We want Cleanit to be the best
+                theme! If you have any comments, please mail us via the form on http://themeforest.net/user/WPequal</p>
+        </section>
+
+        <section id="template_features">
+            <div class="page-header">
+                <h3>Template Features</h3>
+                <hr class="notop">
+            </div>
+            <ul
+                style="padding-right: 0px; padding-left: 0px; margin: 0px 0px 0px 20px; border: 0px; vertical-align: baseline; font-family: 'Open Sans', sans-serif; font-stretch: inherit; line-height: 24px; font-size: 14px; color: rgb(65, 65, 65); list-style: square !important;">
+                <li
+                    style="margin: 0px 0px 10px; padding: 0px 0px 0px 10px; border: 0px; vertical-align: baseline; font-family: inherit; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit;">
+                    Stunning Homepages &amp; Shortcodes </li>
+                <li
+                    style="margin: 0px 0px 10px; padding: 0px 0px 0px 10px; border: 0px; vertical-align: baseline; font-family: inherit; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit;">
+                    Clean &amp; Simple Design</li>
+                <li
+                    style="margin: 0px 0px 10px; padding: 0px 0px 0px 10px; border: 0px; vertical-align: baseline; font-family: inherit; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit;">
+                    HTML5 &amp; CSS3</li>
+                <li
+                    style="margin: 0px 0px 10px; padding: 0px 0px 0px 10px; border: 0px; vertical-align: baseline; font-family: inherit; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit;">
+                    Fully Responsive Design</li>
+                <li
+                    style="margin: 0px 0px 10px; padding: 0px 0px 0px 10px; border: 0px; vertical-align: baseline; font-family: inherit; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit;">
+                    All files are well commented</li>
+                <li
+                    style="margin: 0px 0px 10px; padding: 0px 0px 0px 10px; border: 0px; vertical-align: baseline; font-family: inherit; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit;">
+                    Crossbrowser Compatible with IE10+, Firefox, Safari, Opera, Chrome</li>
+                <li
+                    style="margin: 0px 0px 10px; padding: 0px 0px 0px 10px; border: 0px; vertical-align: baseline; font-family: inherit; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit;">
+                    Extensive Documentation</li>
+                <li
+                    style="margin: 0px 0px 10px; padding: 0px 0px 0px 10px; border: 0px; vertical-align: baseline; font-family: inherit; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit;">
+                    Free Google Fonts Used</li>
+                <li
+                    style="margin: 0px 0px 10px; padding: 0px 0px 0px 10px; border: 0px; vertical-align: baseline; font-family: inherit; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit;">
+                    Bootstrap Framework</li>
+                <li
+                    style="margin: 0px 0px 10px; padding: 0px 0px 0px 10px; border: 0px; vertical-align: baseline; font-family: inherit; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit;">
+                    And much more</li>
+            </ul>
+        </section>
+        <section id="installing_template">
+            <div class="page-header">
+                <h3>Installing Template.</h3>
+                <hr class="notop">
+            </div>
+            <p
+                style="margin: 0px 0px 20px; padding: 0px; border: 0px; vertical-align: baseline; font-family: 'Open Sans', sans-serif; font-stretch: inherit; line-height: 24px; font-size: 14px; color: rgb(65, 65, 65);">
+                After unzip the download pack, you&#39;ll found a&nbsp;<span
+                    style="font-weight: 600; color: rgb(51, 51, 51);">Template Folder</span>&nbsp;with all the files.
+            </p>
+            <p
+                style="margin: 0px 0px 20px; padding: 0px; border: 0px; vertical-align: baseline; font-family: 'Open Sans', sans-serif; font-stretch: inherit; line-height: 24px; font-size: 14px; color: rgb(65, 65, 65);">
+                You can view this Template in any browser, you can display or edit the Template without an internet
+                connection.</p>
+            <p
+                style="margin: 0px 0px 20px; padding: 0px; border: 0px; vertical-align: baseline; font-family: 'Open Sans', sans-serif; font-stretch: inherit; line-height: 24px; font-size: 14px; color: rgb(65, 65, 65);">
+                Once the files are done uploading go to www.yourdomainname.com/index.html</p>
+            <p
+                style="margin: 0px 0px 20px; padding: 0px; border: 0px; vertical-align: baseline; font-family: 'Open Sans', sans-serif; font-stretch: inherit; line-height: 24px; font-size: 14px; color: rgb(65, 65, 65);">
+                <strong>Document Structure:</strong></p>
+            <p
+                style="margin: 0px 0px 20px; padding: 0px; border: 0px; vertical-align: baseline; font-family: 'Open Sans', sans-serif; font-stretch: inherit; line-height: 24px; font-size: 14px; color: rgb(65, 65, 65);">
+                <img alt="" src="assets/images/image_8.png"></p>
+            <p
+                style="margin: 0px 0px 20px; padding: 0px; border: 0px; vertical-align: baseline; font-family: 'Open Sans', sans-serif; font-stretch: inherit; line-height: 24px; font-size: 14px; color: rgb(65, 65, 65);">
+                &nbsp;</p>
+        </section>
+        <section id="html_structure">
+            <div class="page-header">
+                <h3>HTML Structure</h3>
+                <hr class="notop">
+            </div>
+            <p
+                style="margin: 0px 0px 20px; padding: 0px; border: 0px; vertical-align: baseline; font-family: 'Open Sans', sans-serif; font-stretch: inherit; line-height: 24px; font-size: 14px; color: rgb(65, 65, 65);">
+                This Template has a Responsive layout and is based on the&nbsp;<a href="http://getbootstrap.com/"><span
+                        style="font-weight: 600; color: rgb(51, 51, 51);">Bootstrap Framework</span></a>. For more
+                information about this visit <a href="http://getbootstrap.com/"
+                    style="margin: 0px; padding: 0px; border: 0px; vertical-align: baseline; font-family: inherit; font-style: inherit; font-variant: inherit; font-weight: bold; font-stretch: inherit; line-height: inherit; text-decoration: none; -webkit-transition: all 0.15s linear; transition: all 0.15s linear; color: rgb(51, 51, 51);"
+                    target="_blank">GetBootstrap</a>.</p>
+            <p
+                style="margin: 0px 0px 20px; padding: 0px; border: 0px; vertical-align: baseline; font-family: 'Open Sans', sans-serif; font-stretch: inherit; line-height: 24px; font-size: 14px; color: rgb(65, 65, 65);">
+                The default Bootstrap grid system utilizes 12 columns, making for a 940px wide container without
+                responsive features enabled. With the responsive CSS file added, the grid adapts to be 724px and 1170px
+                wide depending on your viewport. Below 767px viewports, the columns become fluid and stack vertically.
+            </p>
+        </section>
+        <section id="head_css_structure">
+            <div class="page-header">
+                <h3>HEAD/CSS Structure</h3>
+                <hr class="notop">
+            </div>
+            <p> <span
+                    style="color: rgb(65, 65, 65); font-family: 'Open Sans', sans-serif; font-size: 14px; line-height: 24px;">These
+                    are the css files that are loaded into templates in&nbsp;</span><span
+                    style="font-weight: 600; color: rgb(51, 51, 51); font-family: 'Open Sans', sans-serif; font-size: 14px; line-height: 24px;">Head
+                    Section</span><span
+                    style="color: rgb(65, 65, 65); font-family: 'Open Sans', sans-serif; font-size: 14px; line-height: 24px;">.</span>
+            </p>
+<pre class="prettyprint lang-html linenums">
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+   
+    &lt;!-- Favicon --&gt;
+    &lt;link rel=&quot;apple-touch-icon&quot; sizes=&quot;180x180&quot; href=&quot;img/apple-touch-icon.png&quot;&gt;
+    &lt;link rel=&quot;icon&quot; type=&quot;image/png&quot; sizes=&quot;32x32&quot; href=&quot;img/favicon-32x32.png&quot;&gt;
+    &lt;link rel=&quot;icon&quot; type=&quot;image/png&quot; sizes=&quot;16x16&quot; href=&quot;img/favicon-16x16.png&quot;&gt;
+   
+    &lt;!-- Fonts --&gt;
+    &lt;link href=&quot;//fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
+   
+    &lt;!-- All Styles --&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;lib/bootstrap/css/bootstrap.min.css&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;lib/fontawesome/css/all.min.css&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;lib/iconfont/flaticon.css&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;lib/Menuzord/css/menuzord.css&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;lib/slick/slick.css&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;lib/slick/slick-theme.css&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;lib/fancybox/jquery.fancybox.css&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;lib/animate/animate.css&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;lib/aos/aos.css&quot;&gt;
+   
+    &lt;!-- Theme Styels --&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;css/style.css&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;css/responsive.css&quot;&gt;
+   
+    &lt;!-- Color Style --&gt;
+    &lt;!-- &lt;link rel=&quot;stylesheet&quot; href=&quot;css/light-blue.css&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;css/orange-color.css&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;css/blue-color.css&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;css/green-color.css&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;css/primary-color.css&quot;&gt; --&gt;
+   
+    &lt;title&gt;Behome - Real Estate HTML Template&lt;/title&gt;
+   
+    &lt;!-- SEO Meta Tags --&gt;
+    &lt;meta name=&quot;description&quot; content=&quot;real estate html template&quot;&gt;
+    &lt;meta name=&quot;keywords&quot; content=&quot;real estate, mortgage, your keywords, Behome&quot;&gt;
+&lt;/head&gt;
+</pre>
+            <p> <span
+                    style="color: rgb(65, 65, 65); font-family: 'Open Sans', sans-serif; font-size: 18px; line-height: 24px;">Google
+                    Web Fonts</span></p>
+            <p> <span
+                    style="color: rgb(65, 65, 65); font-family: 'Open Sans', sans-serif; font-size: 14px; line-height: 24px;">By
+                    default, the template loads this font from Google Web Font Services, you can change the font with
+                    the one that suits you best. You can&nbsp;</span><span
+                    style="color: rgb(65, 65, 65); font-family: 'Open Sans', sans-serif; font-size: 14px; line-height: 24px;">change
+                    the font into&nbsp;</span></p>
+<pre class="prettyprint lang-html linenums">
+&lt;link href=&quot;//fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
+</pre>
+            <p> Remember change</p>
+<pre class="prettyprint lang-css linenums">
+body {
+    font-family: &quot;Raleway&quot;, sans-serif;
+}
+</pre>
+            <div>
+                &nbsp;</div>
+        </section>
+        <section id="javascript">
+            <div class="page-header">
+                <h3>JavaScript</h3>
+                <hr class="notop">
+            </div>
+            <p
+                style="margin: 0px 0px 20px; padding: 0px; border: 0px; vertical-align: baseline; font-family: 'Open Sans', sans-serif; font-stretch: inherit; line-height: 24px; font-size: 14px; color: rgb(65, 65, 65);">
+                These are the JS files that are loaded into templates in end of the&nbsp;<span
+                    style="font-weight: 600; color: rgb(51, 51, 51);">Body Section</span>.</p>
+<pre class="prettyprint lang-js linenums">
+&lt;!-- Scripts --&gt;
+&lt;script src=&quot;lib/jquery-3.4.1.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;lib/jquery-ui.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;lib/bootstrap/js/popper.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;lib/bootstrap/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;lib/counterup/waypoints.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;lib/counterup/jquery.counterup.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;lib/fancybox/jquery.fancybox.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;lib/Menuzord/js/menuzord.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;lib/isotope/isotope.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;lib/aos/aos.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;lib/retina/retina.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;lib/slick/slick.min.js&quot;&gt;&lt;/script&gt;
+
+&lt;script src=&quot;https://maps.googleapis.com/maps/api/js?key=AIzaSyAFxhUVMwiYKz3ii7f3PL1_YYih3fOtg-M&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;lib/maps/footer-map.js&quot;&gt;&lt;/script&gt;
+
+&lt;!-- Custom Scripts --&gt;
+&lt;script src=&quot;js/behome.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;js/slider.js&quot;&gt;&lt;/script&gt;
+ </pre>
+            <p> <span
+                    style="color: rgb(65, 65, 65); font-family: 'Open Sans', sans-serif; font-size: 14px; line-height: 24px;">This
+                    is the complete code for&nbsp;</span><span
+                    style="font-weight: 600; color: rgb(51, 51, 51); font-family: 'Open Sans', sans-serif; font-size: 14px; line-height: 24px;">behome.js</span><span
+                    style="color: rgb(65, 65, 65); font-family: 'Open Sans', sans-serif; font-size: 14px; line-height: 24px;">,
+                    is responsible for all events in the Template. You can edit the following file according to your
+                    requirements.</span></p>
+
+<pre class="prettyprint lang-js linenums">
+(function () {
+    &quot;use strict&quot;;
+    
+    $(document).ready(function () {
+    
+    // Menuzord Navigation Menu Option
+    jQuery(&quot;#menuzord&quot;).menuzord();
+    
+    // Back to Top
+    var btn = $(&#39;#top-button&#39;);
+    
+    $(window).scroll(function () {
+    if ($(window).scrollTop() &gt; 300) {
+    btn.addClass(&#39;show&#39;);
+    } else {
+    btn.removeClass(&#39;show&#39;);
+    }
+    });
+    
+    btn.on(&#39;click&#39;, function (e) {
+    e.preventDefault();
+    $(&#39;html, body&#39;).animate({
+    scrollTop: 0
+    }, &#39;300&#39;);
+    });
+    
+    // Serach Overlay
+    if ($(&#39;.search-overlay&#39;).length) {
+    $(&#39;.close-overlay&#39;).click(function (e) {
+    $(&#39;.search-overlay&#39;).fadeOut();
+    e.preventDefault();
+    });
+    $(&#39;.open-search&#39;).click(function (e) {
+    $(&#39;.search-overlay&#39;).fadeIn();
+    e.preventDefault();
+    });
+    }
+    
+    // Sidebar
+    if ($(&#39;.sidenav&#39;).length) {
+    var openclick = $(&#39;.off-canvas-btn&#39;);
+    var closeclick = $(&#39;.closebtn&#39;);
+    openclick.on(&#39;click&#39;, function (e) {
+    e.preventDefault();
+    $(&#39;#mySidenav&#39;).fadeIn();
+    document.getElementById(&quot;innar-side&quot;).style.right = &quot;0&quot;;
+    });
+    closeclick.on(&#39;click&#39;, function (e) {
+    e.preventDefault();
+    $(&#39;#mySidenav&#39;).fadeOut();
+    document.getElementById(&quot;innar-side&quot;).style.right = &quot;-350px&quot;;
+    });
+    $(document).click(function () {
+    $(&#39;#mySidenav&#39;).fadeOut();
+    document.getElementById(&quot;innar-side&quot;).style.right = &quot;-350px&quot;;
+    });
+    $(&quot;.sidenav-menu&quot;).click(function (e) {
+    e.stopPropagation();
+    });
+    $(&quot;.off-canvas-btn&quot;).click(function (e) {
+    e.stopPropagation();
+    });
+    }
+    if ($(&#39;.advance-search-offcanvas&#39;).length) {
+    var openclick = $(&#39;.show-filter&#39;);
+    var closeclick = $(&#39;.close-search&#39;);
+    openclick.on(&#39;click&#39;, function (e) {
+    e.preventDefault();
+    $(&#39;.advance-search-offcanvas&#39;).fadeIn();
+    });
+    closeclick.on(&#39;click&#39;, function (e) {
+    e.preventDefault();
+    $(&#39;.advance-search-offcanvas&#39;).fadeOut();
+    });
+    $(document).click(function () {
+    $(&#39;.advance-search-offcanvas&#39;).fadeOut();
+    });
+    $(&quot;.advance-search-offcanvas&quot;).click(function (e) {
+    e.stopPropagation();
+    });
+    $(&quot;.show-filter&quot;).click(function (e) {
+    e.stopPropagation();
+    });
+    }
+    
+    // Active Item on Hover
+    if ($(&quot;.hover-active&quot;).length &gt; 0) {
+    $(&quot;.hover-active&quot;).on(&quot;mouseenter mouseleave&quot;, function (event) {
+    if (event.type === &quot;mouseenter&quot;) {
+    $(&#39;.hover-active &gt; div&#39;).removeClass(&#39;active&#39;)
+    $(this)
+    .children()
+    .addClass(&quot;active&quot;);
+    }
+    
+    if (event.type === &quot;mouseleave&quot;) {
+    $(&quot;.hover-active&quot;)
+    // .not(this)
+    $(this).children()
+    .addClass(&quot;active&quot;);
+    }
+    });
+    }
+    
+    // Show Advanced Search
+    $(&#39;.show-advance&#39;).on(&#39;click&#39;, function (e) {
+    $(&#39;.advance-search&#39;).slideToggle(&#39;fast&#39;)
+    e.preventDefault();
+    });
+    $(&#39;.show-switcher&#39;).on(&#39;click&#39;, function (e) {
+    $(&#39;.advance-search&#39;).slideToggle(&#39;fast&#39;)
+    $(this).toggleClass(&#39;active&#39;)
+    e.preventDefault();
+    });
+    $(&#39;.view-advance-search&#39;).on(&#39;click&#39;, function (e) {
+    $(&#39;.property-advance&#39;).slideToggle(&#39;fast&#39;)
+    e.preventDefault();
+    });
+    
+    // Property Switcher
+    $(&#39;.show-list&#39;).on(&#39;click&#39;, function (e) {
+    $(&#39;.show-grid&#39;).removeClass(&#39;active&#39;);
+    $(&#39;.property-gridwise&#39;).hide()
+    $(&#39;.property-listwise&#39;).show()
+    $(this).addClass(&#39;active&#39;);
+    e.preventDefault();
+    });
+    $(&#39;.show-grid&#39;).on(&#39;click&#39;, function (e) {
+    $(&#39;.show-list&#39;).removeClass(&#39;active&#39;);
+    $(&#39;.property-listwise&#39;).hide()
+    $(&#39;.property-gridwise&#39;).show()
+    $(this).addClass(&#39;active&#39;);
+    e.preventDefault();
+    });
+    
+    // Social Left Bar
+    $(&#39;.close-button&#39;).on(&#39;click&#39;, function (e) {
+    $(&#39;.header-left&#39;).css(&#39;left&#39;, &#39;-400px&#39;)
+    $(&#39;.hero-layout-four .open-button&#39;).css(&#39;opacity&#39;, &#39;1&#39;)
+    e.preventDefault();
+    });
+    $(&#39;.open-button&#39;).on(&#39;click&#39;, function (e) {
+    $(&#39;.header-left&#39;).css(&#39;left&#39;, &#39;0&#39;)
+    $(&#39;.hero-layout-four .open-button&#39;).css(&#39;opacity&#39;, &#39;0&#39;)
+    e.preventDefault();
+    });
+    
+    // Feature-Details
+    $(document).on(&quot;click&quot;, function () {
+    $(&quot;.house-feature&quot;).fadeOut(&#39;fast&#39;);
+    $(&#39;.footer-content .advanced&#39;).removeClass(&#39;active&#39;)
+    });
+    $(&#39;.footer-content .advanced&#39;).on(&#39;click&#39;, function (e) {
+    $(this).toggleClass(&#39;active&#39;);
+    $(this).parent().parent().parent().children(&#39;.house-feature&#39;).slideToggle(&#39;fast&#39;);
+    e.preventDefault();
+    e.stopPropagation();
+    });
+    
+    // Map Location
+    $(&#39;.show-location&#39;).on(&#39;click&#39;, function (e) {
+    $(&#39;.show-location&#39;).removeClass(&#39;active&#39;)
+    $(this).addClass(&#39;active&#39;);
+    $(&#39;.map-pin .location-item&#39;).removeClass(&#39;show&#39;)
+    $(this).parent().children(&#39;.location-item&#39;).addClass(&#39;show&#39;);
+    e.preventDefault();
+    });
+    
+    // Feature Tab
+    if($(&#39;.feature-layout-eight&#39;).length){
+    $(&#39;.feature-tab-control .rent-tab&#39;).on(&#39;click&#39;, function () {
+    $(&#39;.feature-tab-control&#39;).children().children().removeClass(&#39;active&#39;)
+    $(this).addClass(&#39;active&#39;);
+    $(&#39;#feature .sale-lists&#39;).hide();
+    $(&#39;#feature .buy-lists&#39;).hide();
+    $(&#39;#feature .rent-lists&#39;).show();
+    });
+    $(&#39;.feature-tab-control .sale-tab&#39;).on(&#39;click&#39;, function () {
+    $(&#39;.feature-tab-control&#39;).children().children().removeClass(&#39;active&#39;)
+    $(this).addClass(&#39;active&#39;);
+    $(&#39;#feature .buy-lists&#39;).hide();
+    $(&#39;#feature .rent-lists&#39;).hide();
+    $(&#39;#feature .sale-lists&#39;).show();
+    });
+    $(&#39;.feature-tab-control .buy-tab&#39;).on(&#39;click&#39;, function () {
+    $(&#39;.feature-tab-control&#39;).children().children().removeClass(&#39;active&#39;)
+    $(this).addClass(&#39;active&#39;);
+    $(&#39;#feature .rent-lists&#39;).hide();
+    $(&#39;#feature .sale-lists&#39;).hide();
+    $(&#39;#feature .buy-lists&#39;).show();
+    });
+    
+    $(&#39;.tab-titles .rent-tab&#39;).on(&#39;click&#39;, function () {
+    $(&#39;.tab-titles&#39;).children().removeClass(&#39;active&#39;)
+    $(this).addClass(&#39;active&#39;);
+    $(&#39;#property .sale-lists&#39;).hide();
+    $(&#39;#property .buy-lists&#39;).hide();
+    $(&#39;#property .rent-lists&#39;).show();
+    });
+    $(&#39;.tab-titles .sale-tab&#39;).on(&#39;click&#39;, function () {
+    $(&#39;.tab-titles&#39;).children().removeClass(&#39;active&#39;)
+    $(this).addClass(&#39;active&#39;);
+    $(&#39;#property .buy-lists&#39;).hide();
+    $(&#39;#property .rent-lists&#39;).hide();
+    $(&#39;#property .sale-lists&#39;).show();
+    });
+    $(&#39;.tab-titles .buy-tab&#39;).on(&#39;click&#39;, function () {
+    $(&#39;.tab-titles&#39;).children().removeClass(&#39;active&#39;)
+    $(this).addClass(&#39;active&#39;);
+    $(&#39;#property .rent-lists&#39;).hide();
+    $(&#39;#property .sale-lists&#39;).hide();
+    $(&#39;#property .buy-lists&#39;).show();
+    });
+    }
+    
+    // Map Layout One
+    if($(&#39;.map-layout-one&#39;).length){
+    $(&#39;.item-dot&#39;).on(&#39;click&#39;, function () {
+    $(&#39;.map-item&#39;).children().removeClass(&#39;item-dot-active&#39;)
+    $(this).addClass(&#39;item-dot-active&#39;);
+    $(&#39;.item-details&#39;).removeClass(&#39;show&#39;)
+    $(this).parent().children(&#39;.item-details&#39;).addClass(&#39;show&#39;);
+    });
+    }
+    
+    // Property Single accordion
+    if($(&#39;.property-collapse&#39;).length){
+    $(&#39;.collapse-click&#39;).on(&#39;click&#39;, function (e) {
+    $(&#39;.collapse-item&#39;).children().children().children().removeClass(&#39;active&#39;)
+    $(this).addClass(&#39;active&#39;);
+    $(&#39;.collapse-item&#39;).removeClass(&#39;show&#39;)
+    $(this).parent().parent().parent().addClass(&#39;show&#39;);
+    e.preventDefault();
+    });
+    }
+    
+    // Featured Property Tab
+    $(&#39;.show-sale&#39;).on(&#39;click&#39;, function(e){
+    $(&#39;#feature .button-small&#39;).removeClass(&#39;active&#39;);
+    $(this).addClass(&#39;active&#39;)
+    $(&#39;.rent-tab&#39;).fadeOut(&#39;fast&#39;)
+    $(&#39;.sale-tab&#39;).fadeIn(&#39;fast&#39;)
+    e.preventDefault();
+    });
+    $(&#39;.show-rent&#39;).on(&#39;click&#39;, function(e){
+    $(&#39;#feature .button-small&#39;).removeClass(&#39;active&#39;);
+    $(this).addClass(&#39;active&#39;)
+    $(&#39;.sale-tab&#39;).fadeOut(&#39;fast&#39;)
+    $(&#39;.rent-tab&#39;).fadeIn(&#39;fast&#39;)
+    e.preventDefault();
+    });
+    
+    // Latest Property Tab
+    $(&#39;.show-latest-sale&#39;).on(&#39;click&#39;, function(e){
+    $(&#39;#latest-property .button-small&#39;).removeClass(&#39;active&#39;);
+    $(this).addClass(&#39;active&#39;)
+    $(&#39;.latest-rent-tab&#39;).css(&#39;opacity&#39;, &#39;0&#39;);
+    $(&#39;.latest-rent-tab&#39;).css(&#39;height&#39;, &#39;0&#39;);
+    $(&#39;.latest-sale-tab&#39;).css(&#39;opacity&#39;, &#39;1&#39;);
+    $(&#39;.latest-sale-tab&#39;).css(&#39;height&#39;, &#39;550px&#39;);
+    e.preventDefault();
+    });
+    $(&#39;.show-latest-rent&#39;).on(&#39;click&#39;, function(e){
+    $(&#39;#latest-property .button-small&#39;).removeClass(&#39;active&#39;);
+    $(this).addClass(&#39;active&#39;)
+    $(&#39;.latest-sale-tab&#39;).css(&#39;opacity&#39;, &#39;0&#39;);
+    $(&#39;.latest-sale-tab&#39;).css(&#39;height&#39;, &#39;0&#39;);
+    $(&#39;.latest-rent-tab&#39;).css(&#39;opacity&#39;, &#39;1&#39;);
+    $(&#39;.latest-rent-tab&#39;).css(&#39;height&#39;, &#39;550px&#39;);
+    e.preventDefault();
+    });
+    
+    // Counter Up
+    if ($(&#39;.counterup&#39;).length) {
+    $(&#39;.counterup&#39;).counterUp();
+    }
+    
+    // Range Sliders
+    $(function () {
+    $(&quot;#range-location&quot;).slider({
+    range: &quot;max&quot;,
+    min: 1,
+    max: 100,
+    value: 50,
+    slide: function( event, ui ) {
+    $( &quot;#amount&quot; ).val( ui.value + &quot; Miles&quot; );
+    }
+    });
+    $( &quot;#amount&quot; ).val( $( &quot;#range-location&quot; ).slider( &quot;value&quot; ) + &quot; Miles&quot; );
+    });
+    
+    $(function () {
+    $(&quot;#slider-range&quot;).slider({
+    range: true,
+    min: 0,
+    max: 15000,
+    values: [1000, 10000],
+    slide: function (event, ui) {
+    $(&quot;#amount-two&quot;).val(&quot;$&quot; + ui.values[0] + &quot; - $&quot; + ui.values[1]);
+    }
+    });
+    $(&quot;#amount-two&quot;).val(&quot;$&quot; + $(&quot;#slider-range&quot;).slider(&quot;values&quot;, 0) +
+    &quot; - $&quot; + $(&quot;#slider-range&quot;).slider(&quot;values&quot;, 1));
+    });
+    
+    // Case Filter 
+    if ($(&#39;.portfolio-items&#39;).length) {
+    var $grid = $(&#39;.portfolio-items&#39;).isotope({
+    itemSelector: &#39;.mix&#39;,
+    layoutMode: &#39;fitRows&#39;,
+    });
+    
+    // bind filter button click
+    $(&#39;.filters-button-group&#39;).on(&#39;click&#39;, &#39;button&#39;, function () {
+    var filterValue = $(this).attr(&#39;data-filter&#39;);
+    $grid.isotope({
+    filter: filterValue
+    });
+    });
+    
+    // change is-checked class on buttons
+    $(&#39;.filters-button-group&#39;).each(function (i, buttonGroup) {
+    var $buttonGroup = $(buttonGroup);
+    $buttonGroup.on(&#39;click&#39;, &#39;button&#39;, function () {
+    $buttonGroup.find(&#39;.is-checked&#39;).removeClass(&#39;is-checked&#39;);
+    $(this).addClass(&#39;is-checked&#39;);
+    });
+    });
+    }
+    
+    // Skill Chart
+    if($(&#39;#skill-canvas&#39;).length){
+    var config = {
+    type: &#39;line&#39;,
+    data: {
+    labels: [&#39;January&#39;, &#39;February&#39;, &#39;March&#39;, &#39;April&#39;, &#39;May&#39;, &#39;June&#39;, &#39;July&#39;],
+    datasets: [{
+    label: &#39;Profit Margin&#39;,
+    backgroundColor: &#39;#fb5252&#39;,
+    borderColor: &#39;#fb5252&#39;,
+    borderWidth: 1,
+    data: [&#39;10&#39;, &#39;12&#39;, &#39;13&#39;, &#39;25&#39;, &#39;00&#39;, &#39;30&#39;, &#39;10&#39;],
+    fill: false,
+    
+    }]
+    },
+    options: {
+    responsive: true,
+    title: {
+    display: false
+    },
+    legend: {
+    display: false,
+    },
+    tooltips: {
+    mode: &#39;index&#39;,
+    intersect: false,
+    },
+    hover: {
+    mode: &#39;nearest&#39;,
+    intersect: true
+    },
+    scales: {
+    x: {
+    display: true,
+    },
+    y: {
+    display: false,
+    max: 40
+    }
+    }
+    }
+    };
+    
+    window.onload = function() {
+    var ctx = document.getElementById(&#39;skill-canvas&#39;).getContext(&#39;2d&#39;);
+    window.myLine = new Chart(ctx, config);
+    };
+    }
+    });
+    // Navigation
+    jQuery(window).on(&#39;scroll&#39;, function () {
+    &#39;use strict&#39;;
+    if (jQuery(window).scrollTop() &gt; 60) {
+    jQuery(&#39;#header-bottom&#39;).addClass(&#39;animated fadeInDown sticky&#39;);
+    jQuery(&#39;.halfmap-fixed&#39;).addClass(&#39;top-bigger&#39;);
+    } else {
+    jQuery(&#39;#header-bottom&#39;).removeClass(&#39;animated fadeInDown sticky&#39;);
+    jQuery(&#39;.halfmap-fixed&#39;).removeClass(&#39;top-bigger&#39;);
+    }
+    if (jQuery(window).scrollTop() &gt; 200) {
+    jQuery(&#39;#header-bottom-two&#39;).addClass(&#39;animated fadeInDown sticky&#39;);
+    } else {
+    jQuery(&#39;#header-bottom-two&#39;).removeClass(&#39;animated fadeInDown sticky&#39;);
+    }
+    });
+    
+    // Custom Scroll
+    $(window).on(&quot;load&quot;, function () {
+    if ($(&#39;.custom-scroll&#39;).length) {
+    $(&quot;.custom-scroll&quot;).mCustomScrollbar({
+    theme: &quot;inset-3&quot;
+    });
+    }
+    });
+    
+    if ($(&#39;.preloader-layout&#39;).length) {
+    $(window).on(&#39;load&#39;, function () { // makes sure the whole site is loaded 
+    $(&#39;.cube-wrapper&#39;).fadeOut(&#39;slow&#39;);
+    $(&#39;.preloader-layout&#39;).delay(400).fadeOut(&#39;slow&#39;);
+    });
+    }
+    
+})()
+</pre>
+            <div>
+                &nbsp;</div>
+        </section>
+
+        <section id="font_icons">
+            <div class="page-header">
+                <h3>Font Icons</h3>
+                <hr class="notop">
+            </div>
+            <p> <span
+                    style="color: rgb(65, 65, 65); font-family: 'Open Sans', sans-serif; font-size: 14px; line-height: 24px;">These
+                    are the Icons used in the template with their related link for documentation.</span></p>
+                    <section id="glyphs">
+
+
+                        <div class="glyph">
+                            <div class="glyph-icon flaticon-shower"></div>
+                            <div class="class-name">.flaticon-shower</div>
+                            <div class="author-name">Author: <a data-file="001-shower"
+                                    href="https://www.flaticon.com/authors/kiranshastry">Kiranshastry</a> </div>
+                        </div>
+                 
+                        <div class="glyph">
+                            <div class="glyph-icon flaticon-bed"></div>
+                            <div class="class-name">.flaticon-bed</div>
+                            <div class="author-name">Author: <a data-file="002-bed"
+                                    href="https://www.flaticon.com/authors/smalllikeart">smalllikeart</a> </div>
+                        </div>
+                 
+                        <div class="glyph">
+                            <div class="glyph-icon flaticon-park"></div>
+                            <div class="class-name">.flaticon-park</div>
+                            <div class="author-name">Author: <a data-file="003-park"
+                                    href="https://www.flaticon.com/authors/smashicons">Smashicons</a> </div>
+                        </div>
+                 
+                        <div class="glyph">
+                            <div class="glyph-icon flaticon-bike"></div>
+                            <div class="class-name">.flaticon-bike</div>
+                            <div class="author-name">Author: <a data-file="004-bike" href="http://www.freepik.com">Freepik</a> </div>
+                        </div>
+                 
+                        <div class="glyph">
+                            <div class="glyph-icon flaticon-pencil"></div>
+                            <div class="class-name">.flaticon-pencil</div>
+                            <div class="author-name">Author: <a data-file="005-pencil" href="http://www.freepik.com">Freepik</a> </div>
+                        </div>
+                 
+                        <div class="glyph">
+                            <div class="glyph-icon flaticon-sketch"></div>
+                            <div class="class-name">.flaticon-sketch</div>
+                            <div class="author-name">Author: <a data-file="006-sketch" href="http://www.freepik.com">Freepik</a> </div>
+                        </div>
+                 
+                        <div class="glyph">
+                            <div class="glyph-icon flaticon-rent"></div>
+                            <div class="class-name">.flaticon-rent</div>
+                            <div class="author-name">Author: <a data-file="007-rent" href="http://www.freepik.com">Freepik</a> </div>
+                        </div>
+                 
+                        <div class="glyph">
+                            <div class="glyph-icon flaticon-car"></div>
+                            <div class="class-name">.flaticon-car</div>
+                            <div class="author-name">Author: <a data-file="008-car"
+                                    href="https://www.flaticon.com/authors/kiranshastry">Kiranshastry</a> </div>
+                        </div>
+                 
+                        <div class="glyph">
+                            <div class="glyph-icon flaticon-address"></div>
+                            <div class="class-name">.flaticon-address</div>
+                            <div class="author-name">Author: <a data-file="009-address" href="http://www.freepik.com">Freepik</a> </div>
+                        </div>
+                 
+                        <div class="glyph">
+                            <div class="glyph-icon flaticon-login"></div>
+                            <div class="class-name">.flaticon-login</div>
+                            <div class="author-name">Author: <a data-file="010-login" href="http://www.freepik.com">Freepik</a> </div>
+                        </div>
+                 
+                        <div class="glyph">
+                            <div class="glyph-icon flaticon-shrink"></div>
+                            <div class="class-name">.flaticon-shrink</div>
+                            <div class="author-name">Author: <a data-file="011-shrink"
+                                    href="https://www.flaticon.com/authors/swifticons">Swifticons</a> </div>
+                        </div>
+                 
+                        <div class="glyph">
+                            <div class="glyph-icon flaticon-balance"></div>
+                            <div class="class-name">.flaticon-balance</div>
+                            <div class="author-name">Author: <a data-file="012-balance"
+                                    href="https://www.flaticon.com/authors/monkik">monkik</a> </div>
+                        </div>
+                 
+                        <div class="glyph">
+                            <div class="glyph-icon flaticon-blog"></div>
+                            <div class="class-name">.flaticon-blog</div>
+                            <div class="author-name">Author: <a data-file="013-blog"
+                                    href="https://www.flaticon.com/authors/eucalyp">Eucalyp</a> </div>
+                        </div>
+                 
+                        <div class="glyph">
+                            <div class="glyph-icon flaticon-logout"></div>
+                            <div class="class-name">.flaticon-logout</div>
+                            <div class="author-name">Author: <a data-file="014-logout"
+                                    href="https://www.flaticon.com/authors/pixel-perfect">Pixel perfect</a> </div>
+                        </div>
+                 
+                        <div class="glyph">
+                            <div class="glyph-icon flaticon-building"></div>
+                            <div class="class-name">.flaticon-building</div>
+                            <div class="author-name">Author: <a data-file="015-building" href="http://www.freepik.com">Freepik</a> </div>
+                        </div>
+                 
+                        <div class="glyph">
+                            <div class="glyph-icon flaticon-left"></div>
+                            <div class="class-name">.flaticon-left</div>
+                            <div class="author-name">Author: <a data-file="016-left"
+                                    href="https://www.flaticon.com/authors/those-icons">Those Icons</a> </div>
+                        </div>
+                 
+                        <div class="glyph">
+                            <div class="glyph-icon flaticon-right"></div>
+                            <div class="class-name">.flaticon-right</div>
+                            <div class="author-name">Author: <a data-file="017-right"
+                                    href="https://www.flaticon.com/authors/those-icons">Those Icons</a> </div>
+                        </div>
+                 
+                        <div class="glyph">
+                            <div class="glyph-icon flaticon-left-chevron"></div>
+                            <div class="class-name">.flaticon-left-chevron</div>
+                            <div class="author-name">Author: <a data-file="018-left-chevron" href="http://www.freepik.com">Freepik</a>
+                            </div>
+                        </div>
+                 
+                        <div class="glyph">
+                            <div class="glyph-icon flaticon-right-chevron"></div>
+                            <div class="class-name">.flaticon-right-chevron</div>
+                            <div class="author-name">Author: <a data-file="019-right-chevron" href="http://www.freepik.com">Freepik</a>
+                            </div>
+                        </div>
+                 
+                        <div class="glyph">
+                            <div class="glyph-icon flaticon-pool"></div>
+                            <div class="class-name">.flaticon-pool</div>
+                            <div class="author-name">Author: <a data-file="020-pool"
+                                    href="https://www.flaticon.com/authors/smashicons">Smashicons</a> </div>
+                        </div>
+                 
+                        <div class="glyph">
+                            <div class="glyph-icon flaticon-security"></div>
+                            <div class="class-name">.flaticon-security</div>
+                            <div class="author-name">Author: <a data-file="021-security" href="http://www.freepik.com">Freepik</a> </div>
+                        </div>
+                 
+                        <div class="glyph">
+                            <div class="glyph-icon flaticon-radio"></div>
+                            <div class="class-name">.flaticon-radio</div>
+                            <div class="author-name">Author: <a data-file="022-radio" href="http://www.freepik.com">Freepik</a> </div>
+                        </div>
+                 
+                        <div class="glyph">
+                            <div class="glyph-icon flaticon-home"></div>
+                            <div class="class-name">.flaticon-home</div>
+                            <div class="author-name">Author: <a data-file="023-home" href="http://www.freepik.com">Freepik</a> </div>
+                        </div>
+                 
+                        <div class="glyph">
+                            <div class="glyph-icon flaticon-cancel"></div>
+                            <div class="class-name">.flaticon-cancel</div>
+                            <div class="author-name">Author: <a data-file="024-cancel" href="http://www.freepik.com">Freepik</a> </div>
+                        </div>
+                 
+                 
+                    </section>
+            <p> &nbsp;</p>
+        </section>
+
+        <section id="source_and_credit">
+            <div class="page-header">
+                <h3>Source and Credit</h3>
+                <hr class="notop">
+            </div>
+            <p> <span
+                    style="color: rgb(65, 65, 65); font-family: 'Open Sans', sans-serif; font-size: 14px; line-height: 24px;">These
+                    are the scripts used in the template with their related link for documentation.</span></p>
+            <ul>
+                <li> jQuery - <a href="http://jquery.com/">http://jquery.com/</a></li>
+                <li> Bootstrap -&nbsp;<a href="http://getbootstrap.com/">http://getbootstrap.com/</a></li>
+                <li> slick -&nbsp;<a
+                        href="https://kenwheeler.github.io/slick/">https://kenwheeler.github.io/slick/</a>
+                </li>
+                <li> Menuzord -&nbsp;<a
+                        href="https://codecanyon.net/item/menuzord-responsive-megamenu/8536398">https://codecanyon.net/item/menuzord-responsive-megamenu/8536398</a>
+                </li>
+                <li> Fancybox -&nbsp;<a
+                        href="http://fancyapps.com/fancybox/3/">http://fancyapps.com/fancybox/3/</a>
+                </li>
+                <li> counterUp -&nbsp;<a
+                        href="https://github.com/bfintal/Counter-Up">https://github.com/bfintal/Counter-Up</a>
+                </li>
+            </ul>
+            <p> &nbsp;</p>
+        </section>
+        <section id="final_words">
+            <div class="page-header">
+                <h3>Final Words</h3>
+                <hr class="notop">
+            </div>
+            <div class="c-text"
+                style="margin: 0px; padding: 0px; border: 0px; vertical-align: baseline; font-family: 'Open Sans', sans-serif; font-stretch: inherit; line-height: 24px; font-size: 14px; color: rgb(65, 65, 65);">
+                <p
+                    style="margin: 0px 0px 20px; padding: 0px; border: 0px; vertical-align: baseline; font-family: inherit; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit;">
+                    <span style="font-weight: 600; color: rgb(51, 51, 51);">Again, thank you for purchasing this
+                        Template!</span></p>
+            </div>
+            <p> &nbsp;</p>
+        </section>
+
+    </div>
+</body>
+
+</html>

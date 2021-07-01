@@ -1,0 +1,52 @@
+/*
+======================================== 
+  26 - Contact Section
+========================================
+*/
+.contact-innar {
+	.contact-item {
+		padding-right: 100px;
+		.contact-lists{
+			padding-top: 25px;
+		}
+		.contact-list{
+			padding-bottom: 10px;
+			.icon{
+				padding-right: 20px;
+			}
+			&:last-child{
+				padding-bottom: 0;
+			}
+		}
+	}
+	.contact-form{
+		.input-full{
+			margin-bottom: 25px;
+		}
+		.textarea-full{
+			margin-bottom: 20px;
+		}
+		label{
+			padding-bottom: 1px;
+			color: $heading-primary;
+		}
+		input, textarea{
+			width: 100%;
+			padding: 12px 25px;
+			border-radius: 3px;
+			border: 1px solid #eaeaea;
+			&:focus{
+				border-color: $primary-color;
+			}
+		}
+		textarea{
+			height: 100px;
+		}
+		.button{
+			font-weight: 400;
+			padding-left: 60px;
+			padding-right: 60px;
+			border-radius: 3px;
+		}
+	}
+}

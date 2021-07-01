@@ -1,0 +1,146 @@
+/*
+======================================== 
+  27 - Other's Section
+========================================
+*/
+.plan-layout-one {
+	background-image: linear-gradient(to left, rgba(0, 0, 0, .70), rgba(0, 0, 0, .70)), url('https://via.placeholder.com/1920x830/aaa/fff');
+	background-repeat: no-repeat;
+	background-size: cover;
+	.plan-item{
+		padding: 0 30px;
+		img{
+			width: 100%;
+		}
+		.img{
+			position: relative;
+		}
+		.hover{
+			position: absolute;
+			left: 0;
+			top: 0;
+			height: 100%;
+			width: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			opacity: 0;
+			transition: opacity .3s ease-in-out;
+		}
+		.content{
+			padding-top: 25px;
+			h4, h6 i{
+				transition: all .3s ease-in-out;
+			}
+			h6{
+				padding: 5px 0 10px;
+				i{
+					font-size: 24px;
+					padding-left: 20px;
+				}
+			}
+		}
+		&:hover{
+			.content{
+				h4 a, h6 i{
+					color: $primary-color;
+				}
+			}
+			.hover{
+				opacity: 1;
+			}
+		}
+	}
+}
+.plan-layout-two{
+	position: relative;
+	.slick-slide img{
+		min-height: 700px;
+		max-width: 150%;
+	}
+	.plan-content{
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		left: 0;
+		top: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: rgba($color: #000000, $alpha: .85);
+		padding-bottom: 50px;
+	}
+	.section-heading{
+		p{
+			text-transform: uppercase;
+			font-weight: 600;
+			padding-bottom: 5px;
+		}
+		h2{
+			color: #fff;
+			text-transform: uppercase;
+		}
+	}
+	.nav-pills .nav-link{
+		border: 2px solid rgba($color: #fff, $alpha: .20);
+		color: #fff;
+		font-weight: 600;
+		text-align: center;
+		padding: 14px 15px;
+		&:not(:last-child){
+			margin-bottom: 20px;
+		}
+	}
+	.nav-pills .nav-link.active, .nav-pills .show>.nav-link{
+		background: $primary-color;
+		border-color: $primary-color;
+	}
+	.tab-content{
+		padding-left: 70px;
+		h4{
+			text-transform: uppercase;
+			line-height: 1;
+			margin-bottom: 20px;
+		}
+		.col-md-7{
+			padding-right: 50px;
+			& > p{
+				font-size: 17px;
+				margin-bottom: 30px;
+			}
+		}
+		.floor-list{
+			li{
+				color: #fff;
+				font-size: 17px;
+				i{
+					margin-right: 8px;
+				}
+				&:not(:last-child){
+					padding-bottom: 10px;
+				}
+			}
+		}
+	}
+	.slick-dots{
+		bottom: 50px;
+		z-index: 15;
+		li{
+			width: 20px;
+			height: 20px;
+			&.slick-active button{
+				background: transparent;
+				border-color: #fff;
+			}
+			button{
+				background: transparent;
+				border: 5px solid rgba($color: #fff, $alpha: .50);
+				width: 20px;
+				height: 20px;
+				&:before{
+					display: none;
+				}		
+			}
+		}
+	}
+}

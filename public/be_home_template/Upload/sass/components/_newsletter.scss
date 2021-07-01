@@ -1,0 +1,99 @@
+/*
+======================================== 
+  23 - Newsletter Section
+========================================
+*/
+.newsletter-layout-one {
+	background: linear-gradient(to right, $primary-color 0%, $primary-color 50%, #151926 50%, #151926 100%);
+	padding: 400px 0 100px;
+	.container-fluid{
+		max-width: 1700px;
+		.col-md-6:first-child{
+			padding-right: 60px;
+		}
+		.col-md-6:last-child{
+			padding-left: 60px;
+		}
+	}
+	.newsletter-title{
+		float: left;
+		padding-right: 30px;
+		width: 32%;
+		h2{
+			line-height: 1;
+			text-transform: uppercase;
+			font-size: 2.3em;
+			padding-top: 5px;
+		}
+		p{
+			font-weight: 600;
+			text-transform: uppercase;
+			line-height: 1;
+		}
+	}
+	.newsletter-form{
+		float: right;
+		width: 68%;
+		input{
+			width: 68%;
+			margin-right: 2%;
+			float: left;
+			padding: 19px 20px;
+			border: 0;
+			background: #fff;
+			text-transform: uppercase;
+		}
+		button{
+			float: right;
+			width: 30%;
+			padding:20px;
+			text-transform: uppercase;
+			background: #151926;
+			text-transform: uppercase;
+			color: #fff;
+		}
+	}
+	.newsletter-item{
+		.icon{
+			font-size: 65px;
+			line-height: 1.1em;
+			margin-right: 20px;
+		}
+		h2{
+			line-height: 1.2;
+		}
+	}
+}
+
+.newsletter-layout-two{
+	.subscribe-form{
+		margin-bottom: 90px;
+		form{
+			position: relative;
+		}
+		input{
+			width: 100%;
+			background: rgba($color: #fff, $alpha: .10);
+			border: 1px solid rgba($color: #fff, $alpha: .20);
+			padding: 22px 40px;
+			color: #fff;
+			border-radius: 5px;
+			&::placeholder{
+				color: #fff;
+			}
+			&:focus{
+				border-color: $primary-color;
+			}
+		}
+		button{
+			padding: 15px 40px;
+			background: $primary-color;
+			color: #fff;
+			text-transform: uppercase;
+			position: absolute;
+			right: 8px;
+			top: 8px;
+			border-radius: 5px;
+		}
+	}
+}

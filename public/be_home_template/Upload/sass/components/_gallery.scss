@@ -1,0 +1,54 @@
+/*
+======================================== 
+  19 - Gallery Section
+========================================
+*/
+.gallery-layout-one {
+	position: relative;
+	margin-top: -230px;
+	margin-bottom: -330px;
+	p.primary-color{
+		font-weight: 600;
+		text-transform: uppercase;
+	}
+	h2{
+		text-transform: uppercase;
+		padding-top: 5px;
+	}
+	.slider-item {
+		position: relative;
+		img{
+			width: 100%;
+		}
+		&:before {
+			content: "";
+			width: calc(100% - 30px);
+			height: calc(100% - 30px);
+			left: 15px;
+			top: 15px;
+			position: absolute;
+			background: rgba($color: #000000, $alpha: .50);
+		}
+	}
+	.slick-dots{
+		bottom: 50px;
+		z-index: 15;
+		li{
+			width: 20px;
+			height: 20px;
+			&.slick-active button{
+				background: transparent;
+				border-color: #fff;
+			}
+			button{
+				background: transparent;
+				border: 5px solid rgba($color: #fff, $alpha: .50);
+				width: 20px;
+				height: 20px;
+				&:before{
+					display: none;
+				}		
+			}
+		}
+	}
+}

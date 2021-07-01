@@ -1,0 +1,223 @@
+.button {
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 12px 40px;
+    display: inline-block;
+    border: 1px solid $primary-color;
+    color: $primary-color;
+    border-radius: 5px;
+
+    &:hover {
+        color: #fff;
+        background: $primary-color;
+        transform: translateY(-4px);
+    }
+}
+
+.button-primary {
+    padding: 14px 50px;
+    background: $primary-color;
+    border: 0;
+    color: #fff;
+    text-transform: unset;
+    &:hover {
+        background: darken($color: $primary-color, $amount: 5)
+    }
+}
+
+.button-white {
+    border: 1px solid #ddd;
+    color: $heading-primary;
+    background: #fff;
+
+    &:hover {
+        background: $primary-color;
+        color: #fff;
+        border-color: $primary-color;
+    }
+}
+
+.button-slides {
+    padding: 8px 40px;
+    border-radius: 40px;
+    background: #fff;
+    border: 0;
+
+    &:hover {
+        background: $primary-color;
+        color: #fff;
+    }
+}
+.button-transparent{
+    background: transparent;
+    border-color: $primary-color;
+    color: $primary-color;
+}
+.button{
+    &.button-icon{
+        padding: 10px 10px 10px 25px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        i{
+            width: 40px;
+            height: 40px;
+            margin-left: 20px;
+            background: #fff;
+            color: $primary-color;
+            display: inline-block;
+            border-radius: 5px;
+            text-align: center;
+            line-height: 40px;
+        }
+    }
+    &.button-blue-icon{
+        background: #fff;
+        border: 0;
+        padding: 10px 10px 10px 25px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        i{
+            width: 40px;
+            height: 40px;
+            margin-left: 20px;
+            background: $blue-color;
+            color: #fff;
+            display: inline-block;
+            border-radius: 5px;
+            text-align: center;
+            line-height: 40px;
+        }
+        &:hover{
+            color: $heading-primary;
+        }
+    }
+    &.button-primary-icon{
+        background: #fff;
+        border: 0;
+        padding: 10px 10px 10px 25px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        i{
+            width: 40px;
+            height: 40px;
+            margin-left: 20px;
+            background: $primary-color;
+            color: #fff;
+            display: inline-block;
+            border-radius: 5px;
+            text-align: center;
+            line-height: 40px;
+        }
+        &:hover{
+            color: $heading-primary;
+        }
+    }
+    &.button-white{
+        &.button-icon{
+            background: #fff;
+            border: 0;
+            padding: 10px 10px 10px 25px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-transform: unset;
+            color: $primary-color;
+            i{
+                width: 40px;
+                height: 40px;
+                margin-left: 20px;
+                background: $primary-color;
+                color: #fff;
+                display: inline-block;
+                border-radius: 5px;
+                text-align: center;
+                line-height: 40px;
+            }
+            &:hover{
+                color: $primary-color;
+            }
+        }
+    }
+}
+.button-blue{
+    border: 0;
+    background: $blue-color;
+    color: #fff;
+    &.button-icon{
+        i{
+            color: $blue-color;
+        }
+    }
+    &:hover{
+        background: lighten($color: $blue-color, $amount: 10);
+    }
+}
+.button-blog {
+    &:hover {
+        background: #fff;
+        color: $primary-color !important;
+        border-color: #fff;
+    }
+}
+.view-more{
+    color: $primary-color;
+    font-weight: 500;
+    font-size: 17px;
+    display: inline-block;
+    line-height: 1;
+    position: relative;
+    transition: all .3s ease-in-out;
+    &:after{
+        content: "\f110";
+        font-family: 'Flaticon';
+        position: absolute;
+        right: -10px;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+        opacity: 0;
+        transition: right .3s ease-in-out, opacity .3s ease-in-out;
+    }
+    &:hover{
+        color: $primary-color;
+        padding-right: 10px;
+        &:after{
+            opacity: 1;
+        }
+    }
+}
+.button-small{
+    padding: 10px 25px;
+    font-weight: 400;
+    border-radius: 3px;
+}
+.button-flat{
+    border-radius: 0;
+}
+// Play Button
+.playbutton {
+    display: inline-block;
+    transition: all 0.5s ease;
+
+    .triangle {
+        transition: all 0.7s ease-in-out;
+        stroke-dasharray: 240;
+        stroke-dashoffset: 480;
+        stroke: $primary-color;
+        transform: translateY(0)
+    }
+
+
+    &:hover {
+        .triangle {
+            stroke-dashoffset: 0;
+            opacity: 1;
+            stroke: $primary-color;
+        }
+
+    }
+}

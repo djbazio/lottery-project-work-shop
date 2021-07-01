@@ -1,0 +1,14 @@
+/*
+======================================== 
+  07 - App Section
+========================================
+*/
+.app-layout-one .container {
+  position: relative; }
+  .app-layout-one .container .app-image {
+    position: absolute;
+    right: -240px;
+    bottom: -101px; }
+
+.app-layout-one .button-group a:first-child {
+  margin-right: 25px; }

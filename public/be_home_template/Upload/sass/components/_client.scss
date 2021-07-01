@@ -1,0 +1,29 @@
+/*
+======================================== 
+  13 - Client Section
+========================================
+*/
+.client-layout-one {
+	.client-item{
+		text-align: center;
+		padding: 25px 15px;
+		img{
+			max-width: 100%;
+		}
+		.normal{
+			display: inline-block;
+		}
+		.active{
+			display: none;
+		}
+		&.slick-current{
+			background: #fff;
+			.normal{
+				display: none;
+			}
+			.active{
+				display: inline-block;
+			}
+		}
+	}
+}

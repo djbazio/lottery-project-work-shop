@@ -136,7 +136,7 @@
         <div class="register-box mt-5">
             <div class="card card-outline card-primary">
                 <div class="card-header text-center">
-                    <a href="{{url('/')}}" class="h1"><b>Lottery-Website</b></a>
+                    <a href="{{ url('/') }}" class="h1"><b>Lottery-Website</b></a>
                 </div>
                 <div class="card-body">
                     <p class="login-box-msg">สมัครสมาชิก เพื่อเข้าใช้งานระบบ</p>
@@ -271,7 +271,7 @@
                         </a>
                     </div> --}}
                     <div align="right" class="mt-2">
-                        <a href="{{url('/')}}" class="text-center">ฉันเป็นสมาชิกอยู่แล้ว</a>
+                        <a href="{{ url('/') }}" class="text-center">ฉันเป็นสมาชิกอยู่แล้ว</a>
                     </div>
                 </div>
                 <!-- /.form-box -->

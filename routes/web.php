@@ -29,7 +29,7 @@ Route::get('/', function () {
     } elseif (Auth::guard('customer')->check()) {
         return view('auth.customer.home');
     } else {
-        return view('auth.login');
+        return view('nomal_user.home');
     }
 });
 

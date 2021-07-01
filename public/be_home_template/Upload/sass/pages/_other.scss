@@ -1,0 +1,38 @@
+/*
+======================================== 
+  29 - Other's Pages
+========================================
+*/
+.error-layout-one {
+  min-height: 1024px;
+  margin-top: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.error-layout-one:before {
+  content: "";
+  border-left: 700px solid $primary-color;
+  border-top: 535px solid transparent;
+  border-bottom: 535px solid transparent;
+  position: absolute;
+  left: 0;
+  top: -0;
+  opacity: 0.03;
+  z-index: -1;
+}
+
+.error-layout-one h2 {
+  color: $heading-primary;
+}
+
+.error-layout-one h1 {
+  font-size: 100px;
+  color: $primary-color;
+}
+
+.error-layout-one p {
+  margin-bottom: 30px;
+}

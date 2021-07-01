@@ -31,6 +31,7 @@
     <link rel="stylesheet" href="{{ asset('adminlte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
 
 
+
     <style>
         .custom-file-upload {
             border: 1px solid #ccc;
@@ -114,6 +115,8 @@
     <script src="{{ asset('adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <!-- AdminLTE App -->
     <script src="{{ asset('adminlte/dist/js/adminlte.min.js') }}"></script>
+
+
     <script>
         $(function() {
             //Initialize Select2 Elements
@@ -125,6 +128,7 @@
             })
         })
     </script>
+
 </body>
 
 </html>

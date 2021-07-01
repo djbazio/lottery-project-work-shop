@@ -1,0 +1,170 @@
+.explore-layout-one{
+    padding: 80px 0 100px;
+    .tab-content{
+        margin-top: 60px;
+    }
+    .nav-tabs .nav-item{
+        padding: 0 14px;
+        &:first-child{
+            padding-left: 0;
+        }
+    }
+    .nav-tabs .nav-item .nav-link{
+        color: $normal-color;
+        padding: 8px 0;
+        border: 0;
+        border-bottom: 2px solid transparent;
+    }
+    .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active{
+        border: 0;
+        border-bottom: 2px solid $primary-color;
+        color: $primary-color;
+    }
+    .explore-list{
+        li:not(:last-child){
+            padding-bottom: 12px;
+        }
+        a{
+            color: $normal-color;
+            font-size: 17px;
+            position: relative;
+            &:before{
+                content: "\f110";
+                font-family: 'Flaticon';
+                position: absolute;
+                left: -10px;
+                top: 50%;
+                transform: translateY(-50%);
+                opacity: 0;
+                transition: left .3s ease-in-out, opacity .3s ease-in-out;
+
+            }
+            &:hover{
+                color: $primary-color;
+                padding-left: 25px;
+                &:before{
+                    opacity: 1;
+                    left: 0;
+                }
+            }
+        }
+    }
+}
+.explore-layout-two{
+    background: #eff2f7;
+    .container-fluid{
+        max-width: 1450px;
+        .explore-carousel{
+            margin: 0 -15px;
+            margin-bottom: 80px;
+        }
+        .explore-tt{
+            padding: 0 15px;
+        }
+    }
+    .explore-item{
+        position: relative;
+        img{
+            width: 100%;
+        }
+        .hover{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            padding: 25px 30px;
+            h4{
+                font-weight: 500;
+                color: #fff;
+            }
+            p{
+				position: relative;
+				display: inline-block;
+                padding-left: 22px;
+                color: #fff;
+				&:before{
+					content: "";
+					width: 16px;
+					height: 16px;
+					border: 2px solid #fff;
+					background: transparent;
+					border-radius: 50%;
+					position: absolute;
+					left: 0;
+					top: 5px;
+				}
+				&:after{
+					content: "";
+					width: 8px;
+					height: 8px;
+					background:  #fff;
+					border-radius: 50%;
+					position: absolute;
+					left: 4px;
+					top: 9px;
+				}
+			}
+        }
+    }
+    .slick-dots{
+		bottom: -80px;
+		z-index: 15;
+		li{
+			width: 24px;
+			height: 24px;
+			&.slick-active button{
+                border: 7px solid $primary-color;
+			}
+			button{
+				background: #f7f6f1;
+				border: 5px solid rgba($color: $primary-color, $alpha: .20);
+				width: 24px;
+                height: 24px;
+                padding: 0;
+                border-radius: 3px;
+				&:before{
+					display: none;
+				}		
+			}
+		}
+	}
+}
+
+.explore-layout-three{
+    .explore-item{
+        position: relative;
+        transition: all .3s ease-in-out;
+        img{
+            width: 100%;
+        }
+        .content{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba($color: #000000, $alpha: .70);
+            padding: 25px 30px;
+            transition: all .3s ease-in-out;
+            a{
+                color: #fff;
+            }
+            p{
+                transition: all .3s ease-in-out;
+                font-weight: 600;
+            }
+        }
+        &:hover{
+            box-shadow: 0px 19px 25px 0px rgba(0, 0, 0, 0.13);
+            .content{
+                background: #fff;
+                a{
+                    color: $heading-primary;
+                }
+                p{
+                    color: $normal-color;
+                }
+            }
+        }
+    }
+}
