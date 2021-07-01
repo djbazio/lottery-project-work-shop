@@ -30,7 +30,7 @@
     <link rel="stylesheet" href="{{ asset('adminlte/plugins/select2/css/select2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('adminlte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
 
-  
+
     <style>
         .custom-file-upload {
             border: 1px solid #ccc;
@@ -42,7 +42,7 @@
     </style>
 </head>
 
-<body class="hold-transition sidebar-mini">
+<body>
     <div class="wrapper">
         <!-- Preloader -->
         <div class="preloader flex-column justify-content-center align-items-center">
@@ -81,7 +81,6 @@
                 <div class="container-fluid">
                     <!-- Your Page Content Here -->
                     @yield('content')
-
                 </div><!-- /.container-fluid -->
             </div>
             <!-- /.content -->
