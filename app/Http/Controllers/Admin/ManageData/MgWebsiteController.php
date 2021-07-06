@@ -43,12 +43,12 @@ class MgWebsiteController extends Controller
             $upload_location = "images/services/website_detail/";
             $full_path = $upload_location . $img_name;
         }
-        $user = DetailWebside::where('id', 5)->update([
+        $user = DetailWebside::where('id', 1)->update([
             "name" => $request->name,
         ]);
 
         if ($request->logo != null) {
-            $user = DetailWebside::where('id', 5)->update([
+            $user = DetailWebside::where('id', 1)->update([
                 "name" => $request->name,
                 "logo" => $full_path,
             ]);

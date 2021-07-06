@@ -36,5 +36,9 @@ class Customers extends Authenticatable
         return $this->hasOne(BankCustomer::class,'id');
     }
 
+    public function transfer_notice_(){
+        return $this->hasMany(TransferNotice::class,'id');
+    }
+
 
 }

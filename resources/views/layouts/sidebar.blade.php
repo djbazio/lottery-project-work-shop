@@ -24,9 +24,10 @@
         @section('sidebar')
             <!-- Sidebar Menu -->
             <nav class="mt-2">
+                {{-- เริ่มจัดการข้อมูล --}}
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <!-- Add icons to the links using the .nav-icon class
-                                                   with font-awesome or any other icon font library -->
+                                                                   with font-awesome or any other icon font library -->
                     <li class="nav-header">หน้าแรก</li>
                     <li class="nav-item">
                         <a href="{{ route('admin.index') }}" class="nav-link">
@@ -55,7 +56,8 @@
                                     <p>จัดการข้อมูลแอตมิน</p>
                                 </a>
                             </li>
-                            <li class="nav-item has-treeview {{ Request::routeIs('admin.view.viewCustomer', 'admin.view.viewCustomerBank') ? 'menu-open' : '' }}">
+                            <li
+                                class="nav-item has-treeview {{ Request::routeIs('admin.view.viewCustomer', 'admin.view.viewCustomerBank') ? 'menu-open' : '' }}">
                                 <a href="#" class="nav-link">
                                     <i class="fab fa-intercom nav-icon"></i>
                                     <p>
@@ -72,7 +74,8 @@
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="{{route('admin.view.viewCustomerBank')}}" class="nav-link {{ Request::routeIs('admin.view.viewCustomerBank') ? 'active' : '' }}">
+                                        <a href="{{ route('admin.view.viewCustomerBank') }}"
+                                            class="nav-link {{ Request::routeIs('admin.view.viewCustomerBank') ? 'active' : '' }}">
                                             <i class="far fa-circle nav-icon"></i>
                                             <p>จัดการธนาคารลูกค้า</p>
                                         </a>
@@ -102,6 +105,31 @@
                             </li>
                     </li>
                 </ul>
+                {{-- จบจัดการข้อมูล --}}
+                <li class="nav-header">แจ้งโอนเงิน</li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-table"></i>
+                        <p>
+                            แจ้งโอนเงิน
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{route('admin.view.viewConfirmationMoney')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>ยืนยันการโอนเงิน</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="pages/tables/data.html" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>ประวัติยืนยันการโอนเงิน</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 </li>
                 {{-- <li class="nav-item">
                     <a href="#" class="nav-link">

@@ -28,4 +28,8 @@ class TransferNotice extends Model
     public function my_bank(){
         return $this->belongsTo(MyBank::class,'bank_id');
     }
+
+    public function customer(){
+        return $this->belongsTo(Customers::class,'cusm_id');
+    }
 }

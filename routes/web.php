@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\ConfirmationMoney\ConfirmationMoneyController;
 use App\Http\Controllers\Admin\ManageData\MgBankController;
 use App\Http\Controllers\Admin\ManageData\MgCusController;
 use App\Http\Controllers\Admin\ManageData\MgLotteryController;
@@ -91,5 +92,9 @@ Route::middleware(['dont_back'])->group(function () {
         //จัดการข้อมูลเว็บไซต์
         Route::get('admin/view/viewWebsiteDetail', [MgWebsiteController::class, 'viewWebsiteDetail'])->name('admin.view.viewWebsiteDetail');
         Route::post('admin/data/websiteDetail/store', [MgWebsiteController::class, 'store'])->name('admin.data.websiteDetail.store');
+        //1.1ยืนยันการเติมเงิน
+        Route::get('admin/view/viewConfirmationMoney', [ConfirmationMoneyController::class, 'index'])->name('admin.view.viewConfirmationMoney');
+        Route::post('admin/confirmation_money/accept/{id}/{cust_id}', [ConfirmationMoneyController::class, 'accept']);
+
     });
 });

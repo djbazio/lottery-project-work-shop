@@ -120,8 +120,6 @@ class MgCusController extends Controller
             ]);
         }
 
-
-
         return response()->json(['code' => '200', 'message' => 'บันทึกข้อมูลสำเร็จ', 'data' => $user], 200);
     }
 
