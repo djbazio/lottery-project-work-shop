@@ -20,5 +20,12 @@ class TransferNotice extends Model
         'money',
         'cusm_id',
         'bank_id',
+        'name_account',
+        'no',
+        'name_bank',
     ];
+
+    public function my_bank(){
+        return $this->belongsTo(MyBank::class,'bank_id');
+    }
 }

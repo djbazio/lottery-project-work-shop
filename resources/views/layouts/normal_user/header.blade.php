@@ -6,16 +6,23 @@
                 <div class="col-md-6 align-self-center">
                     <div class="bar-left">
                         <div class="dropdown pr-3 d-inline-block">
-                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                English <img src="{{asset('be_home_template/Upload/img/flag/1.png')}}" alt="Behome">
+                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                English <img src="{{ asset('be_home_template/Upload/img/flag/1.png') }}" alt="Behome">
                             </a>
 
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <a class="dropdown-item" href="#"> <img src="{{asset('be_home_template/Upload/img/flag/2.png')}}" alt="Behome"> Bangla</a>
-                                <a class="dropdown-item" href="#"> <img src="{{asset('be_home_template/Upload/img/flag/3.png')}}" alt="Behome"> Japanise</a>
-                                <a class="dropdown-item" href="#"> <img src="{{asset('be_home_template/Upload/img/flag/4.png')}}" alt="Behome"> Tamil</a>
+                                <a class="dropdown-item" href="#"> <img
+                                        src="{{ asset('be_home_template/Upload/img/flag/2.png') }}" alt="Behome">
+                                    Bangla</a>
+                                <a class="dropdown-item" href="#"> <img
+                                        src="{{ asset('be_home_template/Upload/img/flag/3.png') }}" alt="Behome">
+                                    Japanise</a>
+                                <a class="dropdown-item" href="#"> <img
+                                        src="{{ asset('be_home_template/Upload/img/flag/4.png') }}" alt="Behome">
+                                    Tamil</a>
                             </div>
-                          </div>
+                        </div>
                         <ul class="list-inline d-inline-block">
                             <li class="list-inline-item mr-4"><i class="fas fa-phone-alt mr-1"></i>
                                 +1-2345-2345-54</li>
@@ -26,10 +33,35 @@
                 </div>
                 <div class="col-md-6 text-right">
                     <ul class="list-inline">
-                        <li class="list-inline-item"><a href="#"><span><i class="fab fa-facebook-f"></i> - </span>Facebook</a></li>
-                        <li class="list-inline-item"><a href="#"><span><i class="fab fa-instagram"></i> - </span>Instagram</a></li>
-                        <li class="list-inline-item"><a href="#"><span><i class="fab fa-twitter"></i> - </span>Twitter</a></li>
-                        <li class="list-inline-item"><a href="#"><span><i class="fab fa-youtube"></i> - </span>YouTube</a></li>
+                        <li class="list-inline-item"><a href="#"><span><i class="fab fa-facebook-f"></i> -
+                                </span>Facebook</a></li>
+                        <li class="list-inline-item"><a href="#"><span><i class="fab fa-instagram"></i> -
+                                </span>Instagram</a></li>
+                        <li class="list-inline-item"><a href="#"><span><i class="fab fa-twitter"></i> -
+                                </span>Twitter</a></li>
+                        @if (Auth::guard('customer')->check())
+                            <li class="list-inline-item"> <a id="navbarDropdown" class="nav-link dropdown-toggle"
+                                    href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false" v-pre>
+                                    <span> {{ Auth::guard('customer')->user()->fname }}
+                                        {{ Auth::guard('customer')->user()->lname }}</span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                           document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                        class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endif
+
+
+
                     </ul>
                 </div>
             </div>
@@ -39,9 +71,11 @@
     <div id="header-bottom">
         <div class="container-fluid">
             <div class="menuzord main-navigation" id="menuzord">
-                <a href="index.html" class="menuzord-brand"><img src="{{asset('be_home_template/Upload/img/logo-red.png')}}" alt="Behome" data-rjs="3"></a>
+                <a href="index.html" class="menuzord-brand"><img
+                        src="{{ asset('be_home_template/Upload/img/logo-red.png') }}" alt="Behome" data-rjs="3"></a>
                 <div class="view-mobile mobile-offcanvas">
-                    <a href="#" class="open-canvas off-canvas-btn"><img src="{{asset('be_home_template/Upload/img/off-canvas.png')}}" alt="Behome"></a>
+                    <a href="#" class="open-canvas off-canvas-btn"><img
+                            src="{{ asset('be_home_template/Upload/img/off-canvas.png') }}" alt="Behome"></a>
                 </div>
                 <div class="menu-middle">
                     <form>
@@ -121,8 +155,22 @@
                     </li>
                     <li><a href="contact-us.html">Contact</a></li>
                     <li><a href="#"><i class="far fa-heart"></i> Collection</a></li>
-                    <li><a href="{{route('login')}}" class="border-0"><i class="far fa-user"></i> Sign In</a></li>
-                    <li class="hide-mobile"><a href="#" class="open-canvas off-canvas-btn"><img src="{{asset('be_home_template/Upload/img/off-canvas.png')}}" alt="Behome"></a></li>
+                    @if (Auth::guard('customer')->check())
+                        <li><a href="#">แจ้งโอน</a>
+                            <ul class="dropdown">
+                                <li><a href="{{ route('customer.transfer_notice') }}">แจ้งโอนเงิน</a></li>
+                                <li><a href="{{route('customer.transfer_notice.view.history')}}">ประวัติ</a></li>
+                            </ul>
+                        </li>
+
+                    @endif
+                    @if (!Auth::guard('customer')->check())
+                        <li><a href="{{ route('login') }}" class="border-0"><i class="far fa-user"></i> Sign In</a>
+                        </li>
+                    @endif
+                    <li class="hide-mobile"><a href="#" class="open-canvas off-canvas-btn"><img
+                                src="{{ asset('be_home_template/Upload/img/off-canvas.png') }}" alt="Behome"></a>
+                    </li>
                 </ul>
             </div>
         </div>

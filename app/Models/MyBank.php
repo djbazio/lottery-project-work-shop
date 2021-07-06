@@ -19,4 +19,9 @@ class MyBank extends Model
         'name',
         'logo',
     ];
+
+    public function transfer_notice()
+    {
+        return $this->hasMany(TransferNotice::class, 'id');
+    }
 }

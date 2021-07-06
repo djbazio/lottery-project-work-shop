@@ -61,12 +61,13 @@ class RegisterController extends Controller
         ]);
     }
 
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\Models\User
-     */
+    ///คอมเม้นนี้คือ หลังจากสมัครจะไม่ให้ล็อกอิน
+    // /**
+    //  * Create a new user instance after a valid registration.
+    //  *
+    //  * @param  array  $data
+    //  * @return \App\Models\User
+    //  */
     protected function create(array $data)
     {
         return Customers::create([
@@ -77,7 +78,6 @@ class RegisterController extends Controller
             'lname' => $data['lname'],
             'address' => $data['address'],
             'money' => "0",
-
         ]);
     }
 }
