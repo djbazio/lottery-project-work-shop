@@ -32,4 +32,8 @@ class TransferNotice extends Model
     public function customer(){
         return $this->belongsTo(Customers::class,'cusm_id');
     }
+
+    public function confirmation_money(){
+        return $this->hasOne(ConfirmationMoney::class,'id');
+    }
 }

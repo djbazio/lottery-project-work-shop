@@ -48,4 +48,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Lottery::class,'id');
     }
+
+    public function confirmation_money(){
+        return $this->hasMany(ConfirmationMoney::class,'id');
+    }
 }

@@ -18,4 +18,12 @@ class ConfirmationMoney extends Model
         'tran_id',
         'user_id',
     ];
+
+    public function user(){
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function transfer_notice(){
+        return $this->belongsTo(TransferNotice::class, 'tran_id');
+    }
 }

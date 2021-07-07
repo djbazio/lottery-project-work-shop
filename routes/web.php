@@ -94,7 +94,11 @@ Route::middleware(['dont_back'])->group(function () {
         Route::post('admin/data/websiteDetail/store', [MgWebsiteController::class, 'store'])->name('admin.data.websiteDetail.store');
         //1.1ยืนยันการเติมเงิน
         Route::get('admin/view/viewConfirmationMoney', [ConfirmationMoneyController::class, 'index'])->name('admin.view.viewConfirmationMoney');
-        Route::post('admin/confirmation_money/accept/{id}/{cust_id}', [ConfirmationMoneyController::class, 'accept']);
-
+        Route::post('admin/confirmation_money/accept/{id}/{cust_id}/{type}', [ConfirmationMoneyController::class, 'accept']);
+        Route::post('admin/confirmation_money/store', [ConfirmationMoneyController::class, 'store_selection'])->name('admin.confirmation_money.store');
+        //1.2ประวัติการเติมเงิน
+        Route::get('admin/view/viewHistoryConfirmationMoney', [ConfirmationMoneyController::class, 'view_history'])->name('admin.view.viewHistoryConfirmationMoney');
+        //1.3 รายการโอนเงิน
+        Route::get('admin/view/viewHistoryTransfer_notice', [ConfirmationMoneyController::class, 'view_history_transfer_notice'])->name('admin.view.viewHistoryTransfer_notice');
     });
 });

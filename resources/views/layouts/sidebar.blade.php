@@ -27,7 +27,7 @@
                 {{-- เริ่มจัดการข้อมูล --}}
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <!-- Add icons to the links using the .nav-icon class
-                                                                   with font-awesome or any other icon font library -->
+                                                                                   with font-awesome or any other icon font library -->
                     <li class="nav-header">หน้าแรก</li>
                     <li class="nav-item">
                         <a href="{{ route('admin.index') }}" class="nav-link">
@@ -41,7 +41,8 @@
                     <li class="nav-header">จัดการข้อมูล</li>
                     <li
                         class="nav-item has-treeview {{ Request::routeIs('admin.view.viewAdmin', 'admin.view.viewCustomer', 'admin.view.viewLottery', 'admin.view.viewBank', 'admin.view.viewWebsiteDetail', 'admin.view.viewCustomerBank') ? 'menu-open' : '' }}">
-                        <a href="#" class="nav-link active">
+                        <a href="#"
+                            class="nav-link {{ Request::routeIs('admin.view.viewAdmin', 'admin.view.viewCustomer', 'admin.view.viewLottery', 'admin.view.viewBank', 'admin.view.viewWebsiteDetail', 'admin.view.viewCustomerBank') ? 'active' : '' }} ">
                             <i class="nav-icon fas fa-tasks"></i>
                             <p>
                                 จัดการข้อมูลพื้นฐาน
@@ -58,14 +59,16 @@
                             </li>
                             <li
                                 class="nav-item has-treeview {{ Request::routeIs('admin.view.viewCustomer', 'admin.view.viewCustomerBank') ? 'menu-open' : '' }}">
-                                <a href="#" class="nav-link">
+                                <a href="#"
+                                    class="nav-link {{ Request::routeIs('admin.view.viewCustomer', 'admin.view.viewCustomerBank') ? 'active' : '' }}">
                                     <i class="fab fa-intercom nav-icon"></i>
                                     <p>
                                         ข้อมูลลูกค้า
                                         <i class="fas fa-angle-left right"></i>
                                     </p>
                                 </a>
-                                <ul class="nav nav-treeview">
+                                <ul
+                                    class="nav nav-treeview {{ Request::routeIs('admin.view.viewCustomer', 'admin.view.viewCustomerBank') ? 'active' : '' }}">
                                     <li class="nav-item">
                                         <a href="{{ route('admin.view.viewCustomer') }}"
                                             class="nav-link {{ Request::routeIs('admin.view.viewCustomer') ? 'active' : '' }}">
@@ -106,9 +109,12 @@
                     </li>
                 </ul>
                 {{-- จบจัดการข้อมูล --}}
+
                 <li class="nav-header">แจ้งโอนเงิน</li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
+                <li
+                    class="nav-item {{ Request::routeIs('admin.view.viewConfirmationMoney', 'admin.view.viewHistoryConfirmationMoney', 'admin.view.viewHistoryTransfer_notice') ? 'menu-open' : '' }}">
+                    <a href="#"
+                        class="nav-link {{ Request::routeIs('admin.view.viewConfirmationMoney', 'admin.view.viewHistoryConfirmationMoney', 'admin.view.viewHistoryTransfer_notice') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-table"></i>
                         <p>
                             แจ้งโอนเงิน
@@ -117,13 +123,22 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{route('admin.view.viewConfirmationMoney')}}" class="nav-link">
+                            <a href="{{ route('admin.view.viewHistoryTransfer_notice') }}"
+                                class="nav-link {{ Request::routeIs('admin.view.viewHistoryTransfer_notice') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>รายการโอนเงิน</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.view.viewConfirmationMoney') }}"
+                                class="nav-link {{ Request::routeIs('admin.view.viewConfirmationMoney') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>ยืนยันการโอนเงิน</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/tables/data.html" class="nav-link">
+                            <a href="{{ route('admin.view.viewHistoryConfirmationMoney') }}"
+                                class="nav-link {{ Request::routeIs('admin.view.viewHistoryConfirmationMoney') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>ประวัติยืนยันการโอนเงิน</p>
                             </a>

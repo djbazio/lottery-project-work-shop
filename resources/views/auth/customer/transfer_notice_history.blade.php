@@ -1,12 +1,10 @@
 @extends('layouts.normal_user.app')
 
 @section('content')
-
-
     <!--
-                                                                                                                                                                                                                                                                                                                                                ========================================
-                                                                                                                                                                                                                                                                                                                                                    Single Blog Sections
-                                                                                                                                                                                                                                                                                                                                                ========================================                                                                                           -->
+                                                                                                                                                                                                                                                                                                                                                    ========================================
+                                                                                                                                                                                                                                                                                                                                                        Single Blog Sections
+                                                                                                                                                                                                                                                                                                                                                    ========================================                                                                                           -->
     <section id="single-blog" class="single-blog-layout pa-100">
         <div class="container">
             <div class="row">

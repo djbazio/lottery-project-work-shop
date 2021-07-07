@@ -17,8 +17,8 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     var id = $(event).data("id");
-            var cusm_id = $(event).data("cusm_id");
-                    let _url = "/admin/confirmation_money/accept/" + id + "/" + cusm_id;
+                    var cusm_id = $(event).data("cusm_id");
+                    let _url = "/admin/confirmation_money/accept/" + id + "/" + cusm_id + "/" + type;
                     let _token = $('meta[name="csrf-token"]').attr('content');
 
                     $.ajax({
@@ -62,7 +62,8 @@
 
         function showInputChouse(event) {
             var btn_chouse = document.getElementById("btn_chouse");
-            var delete_select = document.getElementById("delete_select");
+            var accept_select = document.getElementById("accept_select");
+            var cancel_select = document.getElementById("cancel_select");
             var chk = btn_chouse.getAttribute("status");
             var reset_select = document.getElementById("reset_select");
             var select_all = document.getElementById("select_all");
@@ -76,11 +77,13 @@
                 //ปุ่มยกเลิก
                 btn_chouse.innerHTML = "ยกเลิก";
                 btn_chouse.setAttribute("status", "1");
-                btn_chouse.setAttribute("class", "btn btn-warning");
+                btn_chouse.setAttribute("class", "btn btn-outline-danger");
                 //ปุ้มเพิ่มรรายชื่อ
 
-                //ปุ่มลบทั้งหมด
-                delete_select.hidden = false;
+                //ปุ่มยืนยันทั้งหมด
+                accept_select.hidden = false;
+                //ปุ่มยกเลิกทั้งหมด
+                cancel_select.hidden = false;
                 //reset
                 reset_select.hidden = false;
                 //เลือกทั้งหมด
@@ -95,7 +98,8 @@
 
         function processBtnCancel() {
             var btn_chouse = document.getElementById("btn_chouse");
-            var delete_select = document.getElementById("delete_select");
+            var accept_select = document.getElementById("accept_select");
+            var cancel_select = document.getElementById("cancel_select");
             var chk = btn_chouse.getAttribute("status");
             var reset_select = document.getElementById("reset_select");
             var select_all = document.getElementById("select_all");
@@ -108,8 +112,10 @@
             btn_chouse.innerHTML = "เลือก";
             btn_chouse.setAttribute("status", "0");
             btn_chouse.setAttribute("class", "btn btn-info");
-            //ปุ่มลบทั้งหมด
-            delete_select.hidden = true;
+            //ปุ่มยืนยันทั้งหมด
+            accept_select.hidden = true;
+            //ปุ่มยกเลิกทั้งหมด
+            cancel_select.hidden = true;
             //reset
             reset_select.hidden = true;
             //เลือกทั้งหมด
@@ -117,19 +123,21 @@
             this.reset_select();
         }
 
-        function select_delete() {
+        function select_delete(event) {
             var arr = [];
-            var _url = "{{ route('admin.data.delete.all_user') }}";
+            var type = $(event).data("type");
+            var _url = "{{ route('admin.confirmation_money.store') }}";
             let _token = $('meta[name="csrf-token"]').attr('content');
             $("input:checkbox[name=select]:checked").each(function() {
                 arr.push({
-                    id: $(this).val()
+                    id: $(this).val(),
+                    cusm_id: $(this).data('cusm_id'),
                 });
             });
             var filtarr = arr.filter(function(el) {
                 return el != null;
             });
-            //  console.log(arr);
+            //  console.log(filtarr);
 
             if (filtarr.length > 0) {
                 Swal.fire({
@@ -149,9 +157,11 @@
                             data: {
                                 _token: _token,
                                 pass: filtarr,
+                                type: type,
                             },
                             success: function(res) {
                                 console.log("Sucess");
+                                console.log(res);
                                 if (res.code == '200') {
                                     var response = res.data;
                                     // console.log(response[0].id);
@@ -218,12 +228,14 @@
                             <div class="card-tools">
                                 <button class="btn btn-info" status="0" onclick="showInputChouse(event)"
                                     id="btn_chouse">เลือก</button>
-                                <a href="javascript:void(0)" class="btn btn-success" hidden="true" id="select_all"
+                                <a href="javascript:void(0)" class="btn btn-outline-success" hidden="true" id="select_all"
                                     onclick="select_all()">เลือกทั้งหมด</a>
-                                <a href="javascript:void(0)" class="btn btn-info" hidden="true" id="reset_select"
+                                <a href="javascript:void(0)" class="btn btn-outline-info" hidden="true" id="reset_select"
                                     onclick="reset_select()">รีเซต</a>
-                                <a href="javascript:void(0)" class="btn btn-danger" hidden="true" id="delete_select"
-                                    onclick="select_delete()">ลบข้อมูลที่เลือก</a>
+                                <a href="javascript:void(0)" class="btn btn-success" hidden="true" id="accept_select"
+                                    data-type="0" onclick="select_delete(event.target)">ยืนยันการโอนเงินที่เลือก</a>
+                                <a href="javascript:void(0)" class="btn btn-danger" hidden="true" id="cancel_select"
+                                    data-type="1" onclick="select_delete(event.target)">ยกเลิกการโอนเงินที่เลือก</a>
                                 {{-- <div class="input-group input-group-sm" style="width: 150px;">
                                     <input type="text" name="table_search" class="form-control float-right"
                                         placeholder="Search">
@@ -258,6 +270,13 @@
                                 <tbody>
                                     @foreach ($transfer_notice_histories as $transfer_notice_history)
                                         <tr align="center" id="row_{{ $transfer_notice_history->id }}">
+                                            <th id="td_choese" class="align-middle" hidden>
+                                                <div align="center">
+                                                    <input type="checkbox" class="form-check" name="select"
+                                                        data-cusm_id="{{ $transfer_notice_history->customer->id }}"
+                                                        id="select_input" value="{{ $transfer_notice_history->id }}">
+                                                </div>
+                                            </th>
                                             <td class="align-middle">
                                                 <a href="#" class="pop">
                                                     <img src="{{ asset($transfer_notice_history->pic) }}"
@@ -289,11 +308,11 @@
                                                 {{ Carbon\Carbon::parse($transfer_notice_history->updated_at)->locale('th')->diffForHumans() }}
                                             </th>
                                             <td class="align-middle" align="center">
-                                                <a href="javascript:void(0)" class="btn btn-success" data-type="1"
+                                                <a href="javascript:void(0)" class="btn btn-success" data-type="0"
                                                     data-cusm_id="{{ $transfer_notice_history->customer->id }}"
                                                     data-id="{{ $transfer_notice_history->id }}" id='btn_accept'
                                                     onclick="processAccetpe(event.target)">ยืนยัน</a>
-                                                <a href="javascript:void(0)" class="btn btn-danger" data-type="0"
+                                                <a href="javascript:void(0)" class="btn btn-danger" data-type="1"
                                                     data-cusm_id="{{ $transfer_notice_history->customer->id }}"
                                                     data-id="{{ $transfer_notice_history->id }}"
                                                     onclick="processAccetpe(event.target)" id='btn_cancel'>ยกเลิก</a>
@@ -319,64 +338,25 @@
         </div>
     </section>
 
-    <div class="modal fade" id="post-modal" aria-hidden="true">
+
+    {{-- modal image preview --}}
+    <div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title" id="text_addcus">เพิ่มรายชื่อ</h4>
-                </div>
                 <div class="modal-body">
-                    <form name="userForm" class="form-horizontal">
-                        <input type="hidden" name="post_id" id="post_id" value="">
-                        <div class="form-group">
-                            <label for="efname">ชื่อแรก</label>
-                            <div class="col-sm-12">
-                                <input type="text" class="form-control" id="efname" name="fname"
-                                    placeholder="กรุณากรอกชื่อ เช่น ณัฐวุด">
-                                <span id="efnameError" class="alert-message text-danger"></span>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="elname">นามสกุล</label>
-                            <div class="col-sm-12">
-                                <input type="text" class="form-control" id="elname" name="lname"
-                                    placeholder="กรูณากรอกนามสกุล เช่น ศรีระว้า">
-                                <span id="elnameError" class="alert-message text-danger"></span>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="eusername">ชื่อผู้ใช้</label>
-                            <div class="col-sm-12">
-                                <input type="text" class="form-control" id="eusername" name="username"
-                                    placeholder="โปรดกรอกข้อมูลชื่อผู้ใช้ 6-12 หลัก เช่น wutza001">
-                                <span id="eusernameError" class="alert-message text-danger"></span>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="etel">เบอร์โทรศัพท์</label>
-                            <div class="col-sm-12">
-                                <input type="number" class="form-control" id="etel" name="tel"
-                                    placeholder="กรุณากรอกเบอร์ เช่น 0981546231">
-                                <span id="etelError" class="alert-message text-danger"></span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="eaddress">ที่อยู่</label>
-                            <div class="col-sm-12">
-                                <textarea name="address" class="form-control" id="eaddress" cols="30" rows="5"
-                                    placeholder="กรุณากรอกที่อยู่ เช่น พช.3017 ตำบล ยางสาว อำเภอวิเชียรบุรี เพชรบูรณ์ 67130"></textarea>
-                                <span id="eaddressError" class="alert-message text-danger"></span>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" onclick="createPost()">บันทึก</button>
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+                            class="sr-only">Close</span></button>
+                    <img src="" class="imagepreview" style="width: 100%;">
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        $(function() {
+            $('.pop').on('click', function() {
+                $('.imagepreview').attr('src', $(this).find('img').attr('src'));
+                $('#imagemodal').modal('show');
+            });
+        });
+    </script>
 @endsection
