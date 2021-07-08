@@ -277,14 +277,14 @@
                                                         id="select_input" value="{{ $transfer_notice_history->id }}">
                                                 </div>
                                             </th>
+                                            <td class="align-middle">{{ $transfer_notice_history->customer->username }}
+                                            </td>
                                             <td class="align-middle">
                                                 <a href="#" class="pop">
                                                     <img src="{{ asset($transfer_notice_history->pic) }}"
                                                         alt="{{ $transfer_notice_history->pic }}" width="100"
                                                         height="100">
                                                 </a>
-                                            </td>
-                                            <td class="align-middle">{{ $transfer_notice_history->customer->username }}
                                             </td>
                                             <td class="align-middle">{{ $transfer_notice_history->no }}</td>
                                             <td class="align-middle">{{ $transfer_notice_history->name_bank }}</td>

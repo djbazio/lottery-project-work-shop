@@ -51,6 +51,13 @@ Route::middleware(['dont_back'])->group(function () {
         Route::post('customer/transfer_notice/store', [TransferNoticeController::class, 'store'])->name('customer.transfer_notice.store');
         //1.2 ประวัติแจ้งโอน
         Route::get('customer/transfer_notice/view/history', [TransferNoticeController::class, 'view_history'])->name('customer.transfer_notice.view.history');
+        //1.3 ธนาคารของฉัน
+        Route::get('customer/transfer_notice/view/cus_bank', [TransferNoticeController::class, 'view_cus_bank'])->name('customer.transfer_notice.view_cus_bank');
+        Route::post('customer/transfer_notice/cus_bank/store', [TransferNoticeController::class, 'cus_bank_store'])->name('customer.transfer_notice.cus_bank.store');
+        Route::post('customer/api/get_customer_bank_data/{id}', [TransferNoticeController::class, 'get_customer_bank_data']);
+        Route::delete('customer/data/delete/customer_bank/{id}', [TransferNoticeController::class, 'delete_customer_bank']);
+        Route::post('customer/data/delete/all_customer_bank/', [TransferNoticeController::class, 'delete_all_customer_bank'])->name('customer.data.delete.all_customer_bank');
+
     });
 
     Route::middleware(['auth:user', 'checkstatus'])->group(function () {

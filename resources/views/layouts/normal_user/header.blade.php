@@ -37,13 +37,13 @@
                                 </span>Facebook</a></li>
                         <li class="list-inline-item"><a href="#"><span><i class="fab fa-instagram"></i> -
                                 </span>Instagram</a></li>
-                        <li class="list-inline-item"><a href="#"><span><i class="fab fa-twitter"></i> -
-                                </span>Twitter</a></li>
+                        {{-- <li class="list-inline-item"><a href="#"><span><i class="fab fa-twitter"></i> -
+                                </span>Twitter</a></li> --}}
                         @if (Auth::guard('customer')->check())
                             <li class="list-inline-item"> <a id="navbarDropdown" class="nav-link dropdown-toggle"
                                     href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
                                     aria-expanded="false" v-pre>
-                                    <span> {{ Auth::guard('customer')->user()->fname }}
+                                    <span>ยินดีตอนรับคุณ: {{ Auth::guard('customer')->user()->fname }}
                                         {{ Auth::guard('customer')->user()->lname }}</span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -59,9 +59,6 @@
                                 </div>
                             </li>
                         @endif
-
-
-
                     </ul>
                 </div>
             </div>
@@ -153,13 +150,14 @@
                             <li><a href="blog-single.html">Blog Single </a></li>
                         </ul>
                     </li>
-                    <li><a href="contact-us.html">Contact</a></li>
+                    {{-- <li><a href="contact-us.html">Contact</a></li> --}}
                     <li><a href="#"><i class="far fa-heart"></i> Collection</a></li>
                     @if (Auth::guard('customer')->check())
-                        <li><a href="#">แจ้งโอน</a>
+                        <li><a href="#">ธุรกรรมทางการเงิน</a>
                             <ul class="dropdown">
-                                <li><a href="{{ route('customer.transfer_notice') }}">แจ้งโอนเงิน</a></li>
-                                <li><a href="{{route('customer.transfer_notice.view.history')}}">ประวัติ</a></li>
+                                <li><a href="{{ route('customer.transfer_notice.view_cus_bank') }}">ธนาคารของฉัน</a></li>
+                                <li><a href="{{ route('customer.transfer_notice') }}">โอนเงิน</a></li>
+                                <li><a href="{{route('customer.transfer_notice.view.history')}}">ประวัติการโอนเงิน</a></li>
                             </ul>
                         </li>
 

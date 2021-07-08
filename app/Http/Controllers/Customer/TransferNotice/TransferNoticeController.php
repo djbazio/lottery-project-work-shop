@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Customer\TransferNotice;
 
 use App\Http\Controllers\Controller;
+use App\Models\BankCustomer;
 use App\Models\MyBank;
 use App\Models\TransferNotice;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -81,12 +83,101 @@ class TransferNoticeController extends Controller
 
         return response()->json(['code' => '200', 'message' => 'บันทึกข้อมูลสำเร็จ', 'data' => $user], 200);
     }
-
+    //ประวัติ
     public function view_history()
     {
         $auth_user = Auth::guard('customer')->user();
         $transfer_notice_histories = TransferNotice::where('cusm_id', $auth_user->id)->orderByDesc('updated_at')->paginate(10);
         // return dd($transfer_notice_histories->id);
         return view('auth.customer.transfer_notice_history', compact('transfer_notice_histories'));
+    }
+    //ธนาคารของฉัน
+    public function view_cus_bank()
+    {
+        $auth_user = Auth::guard('customer')->user();
+        $bank_customers = BankCustomer::where('cust_id', $auth_user->id)->orderByDesc('updated_at')->paginate(10);
+        return view('auth.customer.customer_bank', compact('bank_customers'));
+    }
+
+    public function cus_bank_store(Request $request)
+    {
+        if ($request->id != "") {
+            $bank_customers = BankCustomer::find($request->id);
+            $request->validate(
+                [
+                    "no" => $request->no != $bank_customers->no ? "required|digits:10|unique:bank_customers|unique:my_banks" : "required|digits:10|unique:my_banks",
+                    "name_account" => "required|min:2|max:255",
+                    "name_bank" => "required|min:2|max:255"
+                ],
+                // [
+                //     //username
+                //     "username.required" => "กรุณากรอกช่องนี้",
+                //     "username.min" => "ต้องมีอย่างน้อย6ตัวอักษร",
+                //     "username.max" => "ต้องมีไม่เกิน12ตัวอักษร",
+                //     "username.unique" => "ชื่อผู้ใช้นี้ถูกใช้แล้ว",
+                //     //name
+                //     "name.required" => "กรุณากรอกช่องนี้",
+                //     "name.min" => "ต้องมีอย่างน้อย6ตัวอักษร",
+                //     "name.max" => "ต้องมีไม่เกิน255ตัวอักษร",
+                //     //tel
+                //     "tel.min" => "กรุณากรอกเบอร์โทร10หลัก",
+                //     "tel.max" => "กรุณากรอกเบอร์โทร10หลัก",
+                //     "tel.unique" => "เบอร์โทรนี้ถูกใช้แล้ว",
+                // ],
+            );
+        } else {
+            $request->validate(
+                [
+                    "no" => "required|digits:10|unique:bank_customers|unique:my_banks",
+                    "name_account" => "required|min:2|max:255",
+                    "name_bank" => "required|min:2|max:255"
+                ],
+                // [
+                //     //username
+                //     "username.required" => "กรุณากรอกช่องนี้",
+                //     "username.min" => "ต้องมีอย่างน้อย6ตัวอักษร",
+                //     "username.max" => "ต้องมีไม่เกิน12ตัวอักษร",
+                //     "username.unique" => "ชื่อผู้ใช้นี้ถูกใช้แล้ว",
+                //     //name
+                //     "name.required" => "กรุณากรอกช่องนี้",
+                //     "name.min" => "ต้องมีอย่างน้อย6ตัวอักษร",
+                //     "name.max" => "ต้องมีไม่เกิน255ตัวอักษร",
+                //     //tel
+                //     "tel.min" => "กรุณากรอกเบอร์โทร10หลัก",
+                //     "tel.max" => "กรุณากรอกเบอร์โทร10หลัก",
+                //     "tel.unique" => "เบอร์โทรนี้ถูกใช้แล้ว",
+                // ],
+            );
+        }
+        $user = BankCustomer::updateOrCreate(['id' => $request->id], [
+            "no" => $request->no,
+            "name_account" => $request->name_account,
+            "name_bank" => $request->name_bank,
+            "cust_id" => Auth::guard('customer')->user()->id,
+        ]);
+        $user->updated_at_2 = Carbon::parse($user->updated_at)->locale('th')->diffForHumans();
+
+        return response()->json(['code' => '200', 'message' => 'บันทึกข้อมูลสำเร็จ', 'data' => $user], 200);
+    }
+
+    public function get_customer_bank_data($id)
+    {
+        $bank_customers = BankCustomer::find($id);
+        return response()->json($bank_customers);
+    }
+
+    public function delete_customer_bank($id)
+    {
+        $bank_customers = BankCustomer::find($id)->delete();
+        return response()->json(['sucess' => "ลบข้อมูลเรียบร้อย", "code" => "200"]);
+    }
+
+    public function delete_all_customer_bank(Request $request)
+    {
+        $data = $request->pass;
+        for ($i = 0; $i < count($data); $i++) {
+            BankCustomer::find($data[$i]['id'])->delete();
+        }
+        return response()->json(["code" => "200", "message" => "ลบข้อมูลสำเร็จ", "data" => $data]);
     }
 }

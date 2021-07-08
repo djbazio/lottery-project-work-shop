@@ -30,7 +30,7 @@
                                                                                    with font-awesome or any other icon font library -->
                     <li class="nav-header">หน้าแรก</li>
                     <li class="nav-item">
-                        <a href="{{ route('admin.index') }}" class="nav-link">
+                        <a href="{{ route('admin.index') }}" class="nav-link {{ Request::routeIs('admin.index') ? 'active' : '' }}">
                             <i class="nav-icon fas fa-home"></i>
                             <p>
                                 หน้าแรก
