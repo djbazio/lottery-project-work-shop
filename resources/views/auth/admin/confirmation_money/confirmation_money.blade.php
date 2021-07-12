@@ -142,7 +142,7 @@
             if (filtarr.length > 0) {
                 Swal.fire({
                     title: 'คุณแน่ใจใช่หรือไม่?',
-                    text: "คุณต้องการลบข้อมูลที่เลือกใช่หรือไม่?",
+                    text: "คุณต้องการทำรายการที่เลือกใช่หรือไม่?",
                     icon: 'question',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',

@@ -8,7 +8,7 @@
             $("#no").val('');
             $("#name_account").val('');
             $("#name_bank").val('');
-            $("#text_addcus").html("เพิ่มรายชื่อ");
+            $("#text_addcus").html("เพิ่มข้อมูลธนาคาร");
             $('#post-modal').modal('show');
         }
 
@@ -116,7 +116,7 @@
             let _url = "/customer/api/get_customer_bank_data/" + id;
             let _token = $('meta[name="csrf-token"]').attr('content');
 
-            $("#text_addcus").html("แก้ไขรายชื่อ");
+            $("#text_addcus").html("แก้ไขข้อมูลธนาคาร");
             resetInput();
             $.ajax({
                 url: _url,
@@ -351,7 +351,7 @@
                                 onclick="select_delete()">ลบข้อมูลที่เลือก</a>
 
                             <a href="javascript:void(0)" class="btn btn-success " id="create-new-post"
-                                onclick="addPost()">เพิ่มรายชื่อ</a>
+                                onclick="addPost()">เพิ่มข้อมูลธนาคาร</a>
                         </div>
                         <table class="table" id="table_crud">
                             <thead>

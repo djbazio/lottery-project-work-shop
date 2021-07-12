@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\ManageData\MgBankController;
 use App\Http\Controllers\Admin\ManageData\MgCusController;
 use App\Http\Controllers\Admin\ManageData\MgLotteryController;
 use App\Http\Controllers\Admin\ManageData\MgWebsiteController;
+use App\Http\Controllers\Branch\BranchHomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Customer\CustomerController;
 use App\Http\Controllers\Customer\TransferNotice\TransferNoticeController;
@@ -30,8 +31,12 @@ Route::middleware(['dont_back'])->group(function () {
             $customers_row = Customers::count();
             $data = array('customers_row' => $customers_row);
             return view('auth.admin.home', ['data' => $data]);
+        } elseif (Auth::guard('branch')->check()) {
+            return view('auth.branch.home');
         } else {
             // return dd(Auth::check());
+            //   return  dd(Auth::guard('user')->check());
+
             return view('nomal_user.home');
         }
     });
@@ -57,7 +62,6 @@ Route::middleware(['dont_back'])->group(function () {
         Route::post('customer/api/get_customer_bank_data/{id}', [TransferNoticeController::class, 'get_customer_bank_data']);
         Route::delete('customer/data/delete/customer_bank/{id}', [TransferNoticeController::class, 'delete_customer_bank']);
         Route::post('customer/data/delete/all_customer_bank/', [TransferNoticeController::class, 'delete_all_customer_bank'])->name('customer.data.delete.all_customer_bank');
-
     });
 
     Route::middleware(['auth:user', 'checkstatus'])->group(function () {
@@ -107,5 +111,9 @@ Route::middleware(['dont_back'])->group(function () {
         Route::get('admin/view/viewHistoryConfirmationMoney', [ConfirmationMoneyController::class, 'view_history'])->name('admin.view.viewHistoryConfirmationMoney');
         //1.3 รายการโอนเงิน
         Route::get('admin/view/viewHistoryTransfer_notice', [ConfirmationMoneyController::class, 'view_history_transfer_notice'])->name('admin.view.viewHistoryTransfer_notice');
+    });
+
+    Route::middleware(['auth:branch'])->group(function () {
+        Route::get('branch/view/home', [BranchHomeController::class, 'index'])->name('branch.view.home');
     });
 });

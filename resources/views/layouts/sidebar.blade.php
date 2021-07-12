@@ -5,7 +5,8 @@
         <!--<img src="{{ asset('adminlte/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">-->
         <i class="fas fa-laptop-code fa-1x"></i>
-        <span class="brand-text font-weight-light">{{ config('app.name', 'Laravel') }}</span>
+        {{-- <span class="brand-text font-weight-light">{{ config('app.name', 'Laravel') }}</span> --}}
+        ส่วนกลาง
     </a>
 
     <!-- Sidebar -->
@@ -27,10 +28,11 @@
                 {{-- เริ่มจัดการข้อมูล --}}
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <!-- Add icons to the links using the .nav-icon class
-                                                                                   with font-awesome or any other icon font library -->
+                                                                                           with font-awesome or any other icon font library -->
                     <li class="nav-header">หน้าแรก</li>
                     <li class="nav-item">
-                        <a href="{{ route('admin.index') }}" class="nav-link {{ Request::routeIs('admin.index') ? 'active' : '' }}">
+                        <a href="{{ route('admin.index') }}"
+                            class="nav-link {{ Request::routeIs('admin.index') ? 'active' : '' }}">
                             <i class="nav-icon fas fa-home"></i>
                             <p>
                                 หน้าแรก
@@ -110,12 +112,107 @@
                 </ul>
                 {{-- จบจัดการข้อมูล --}}
 
+                <li class="nav-header">ข้อมูลสมาชิก</li>
+                <li
+                    class="nav-item {{ Request::routeIs('admin.view.viewConfirmationMoney', 'admin.view.viewHistoryConfirmationMoney', 'admin.view.viewHistoryTransfer_notice') ? 'menu-open' : '' }}">
+                    <a href="#"
+                        class="nav-link {{ Request::routeIs('admin.view.viewConfirmationMoney', 'admin.view.viewHistoryConfirmationMoney', 'admin.view.viewHistoryTransfer_notice') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-users"></i>
+                        <p>
+                            ข้อมูลสมาชิก
+                            <i class="fas fa-angle-left right"></i>
+
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('admin.view.viewHistoryTransfer_notice') }}"
+                                class="nav-link {{ Request::routeIs('admin.view.viewHistoryTransfer_notice') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>สาขาย่อย</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.view.viewConfirmationMoney') }}"
+                                class="nav-link {{ Request::routeIs('admin.view.viewConfirmationMoney') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>ผู้ขาย</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.view.viewHistoryConfirmationMoney') }}"
+                                class="nav-link {{ Request::routeIs('admin.view.viewHistoryConfirmationMoney') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>ผู้ซื้อ</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-header">ข้อมูลสลาก</li>
+                <li
+                    class="nav-item {{ Request::routeIs('admin.view.viewConfirmationMoney', 'admin.view.viewHistoryConfirmationMoney', 'admin.view.viewHistoryTransfer_notice') ? 'menu-open' : '' }}">
+                    <a href="#"
+                        class="nav-link {{ Request::routeIs('admin.view.viewConfirmationMoney', 'admin.view.viewHistoryConfirmationMoney', 'admin.view.viewHistoryTransfer_notice') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-ticket-alt"></i>
+                        <p>
+                            ข้อมูลสลาก
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('admin.view.viewHistoryTransfer_notice') }}"
+                                class="nav-link {{ Request::routeIs('admin.view.viewHistoryTransfer_notice') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>แต่ละสาขา</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.view.viewConfirmationMoney') }}"
+                                class="nav-link {{ Request::routeIs('admin.view.viewConfirmationMoney') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>ทั้งหมด</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-header">ข้อมูลรายรับค่าฝาก</li>
+                <li
+                    class="nav-item {{ Request::routeIs('admin.view.viewConfirmationMoney', 'admin.view.viewHistoryConfirmationMoney', 'admin.view.viewHistoryTransfer_notice') ? 'menu-open' : '' }}">
+                    <a href="#"
+                        class="nav-link {{ Request::routeIs('admin.view.viewConfirmationMoney', 'admin.view.viewHistoryConfirmationMoney', 'admin.view.viewHistoryTransfer_notice') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-calendar-day"></i>
+                        <p>
+                            ข้อมูลรายรับค่าฝาก
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('admin.view.viewHistoryTransfer_notice') }}"
+                                class="nav-link {{ Request::routeIs('admin.view.viewHistoryTransfer_notice') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>แต่ละสาขา</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.view.viewConfirmationMoney') }}"
+                                class="nav-link {{ Request::routeIs('admin.view.viewConfirmationMoney') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>ทั้งหมด</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
                 <li class="nav-header">แจ้งโอนเงิน</li>
                 <li
                     class="nav-item {{ Request::routeIs('admin.view.viewConfirmationMoney', 'admin.view.viewHistoryConfirmationMoney', 'admin.view.viewHistoryTransfer_notice') ? 'menu-open' : '' }}">
                     <a href="#"
                         class="nav-link {{ Request::routeIs('admin.view.viewConfirmationMoney', 'admin.view.viewHistoryConfirmationMoney', 'admin.view.viewHistoryTransfer_notice') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-table"></i>
+                        <i class="nav-icon fas fa-money-check-alt"></i>
                         <p>
                             แจ้งโอนเงิน
                             <i class="fas fa-angle-left right"></i>
@@ -144,6 +241,119 @@
                             </a>
                         </li>
                     </ul>
+                </li>
+
+                <li class="nav-header">ข้อมูลยอดขาย</li>
+                <li
+                    class="nav-item {{ Request::routeIs('admin.view.viewConfirmationMoney', 'admin.view.viewHistoryConfirmationMoney', 'admin.view.viewHistoryTransfer_notice') ? 'menu-open' : '' }}">
+                    <a href="#"
+                        class="nav-link {{ Request::routeIs('admin.view.viewConfirmationMoney', 'admin.view.viewHistoryConfirmationMoney', 'admin.view.viewHistoryTransfer_notice') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-chart-bar"></i>
+                        <p>
+                            ข้อมูลยอดขาย
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('admin.view.viewHistoryTransfer_notice') }}"
+                                class="nav-link {{ Request::routeIs('admin.view.viewHistoryTransfer_notice') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>แต่ละสาขา</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.view.viewHistoryTransfer_notice') }}"
+                                class="nav-link {{ Request::routeIs('admin.view.viewHistoryTransfer_notice') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>ทั้งหมด</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-header">ข้อมูลการรับชำระเงิน(การซื้อ)​</li>
+                <li
+                    class="nav-item {{ Request::routeIs('admin.view.viewConfirmationMoney', 'admin.view.viewHistoryConfirmationMoney', 'admin.view.viewHistoryTransfer_notice') ? 'menu-open' : '' }}">
+                    <a href="#"
+                        class="nav-link {{ Request::routeIs('admin.view.viewConfirmationMoney', 'admin.view.viewHistoryConfirmationMoney', 'admin.view.viewHistoryTransfer_notice') ? 'active' : '' }}">
+                        <i class="nav-icon far fa-money-bill-alt"></i>
+                        <p>
+                            ข้อมูลการรับชำระเงิน​
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('admin.view.viewHistoryTransfer_notice') }}"
+                                class="nav-link {{ Request::routeIs('admin.view.viewHistoryTransfer_notice') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>รอการชำระเงิน</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.view.viewConfirmationMoney') }}"
+                                class="nav-link {{ Request::routeIs('admin.view.viewConfirmationMoney') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>รายการแจ้งโอน</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.view.viewConfirmationMoney') }}"
+                                class="nav-link {{ Request::routeIs('admin.view.viewConfirmationMoney') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>รายการตรวจสอบชำระแล้ว</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-header">ข้อมูลสลากที่ถูกรางวัล</li>
+                <li
+                    class="nav-item {{ Request::routeIs('admin.view.viewConfirmationMoney', 'admin.view.viewHistoryConfirmationMoney', 'admin.view.viewHistoryTransfer_notice') ? 'menu-open' : '' }}">
+                    <a href="#"
+                        class="nav-link {{ Request::routeIs('admin.view.viewConfirmationMoney', 'admin.view.viewHistoryConfirmationMoney', 'admin.view.viewHistoryTransfer_notice') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-check-circle"></i>
+                        <p>
+                            ข้อมูลสลากที่ถูกรางวัล
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('admin.view.viewHistoryTransfer_notice') }}"
+                                class="nav-link {{ Request::routeIs('admin.view.viewHistoryTransfer_notice') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>รอผู้ซื้อดำเนินการ</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.view.viewHistoryTransfer_notice') }}"
+                                class="nav-link {{ Request::routeIs('admin.view.viewHistoryTransfer_notice') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>ขอขึ้นเงิน(หัก2%)​</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.view.viewHistoryTransfer_notice') }}"
+                                class="nav-link {{ Request::routeIs('admin.view.viewHistoryTransfer_notice') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>ขอรับสลากที่สาขา</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-header">ข้อมูลการจ่ายเงิน</li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.index') }}"
+                        class="nav-link {{ Request::routeIs('admin.index') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-cash-register"></i>
+                        <p>
+                            ข้อมูลการจ่ายเงิน
+                            {{-- <span class="badge badge-info right">2</span> --}}
+                        </p>
+                    </a>
                 </li>
                 </li>
                 {{-- <li class="nav-item">

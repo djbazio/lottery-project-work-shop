@@ -15,7 +15,8 @@ class TransferNoticeController extends Controller
     public function index()
     {
         $my_banks = MyBank::all();
-        return view('auth.customer.transfer_notice', compact('my_banks'));
+        $bank_customers = BankCustomer::where('cust_id', Auth::guard('customer')->user()->id)->get();
+        return view('auth.customer.transfer_notice', compact('my_banks', 'bank_customers'));
     }
 
     public function store(Request $request)
@@ -23,26 +24,14 @@ class TransferNoticeController extends Controller
         //เพิ่มข้อมูลใหม่
         $request->validate(
             [
-                "no" => "required|digits:10|numeric",
-                "name_bank" => "required|min:2|max:255",
-                "name_account" => "required|min:2|max:255",
+                "bank_cus_id" => "required",
                 "bank_id" => "required",
                 "money" => "required|min:2|max:10",
                 "pic" => "required|mimes:png,jpg,jpeg",
             ],
             [
-                //no
-                "no.required" => "กรุณากรอกช่องนี้",
-                "no.digits" => "กรุณากรอก10หลัก",
-                "no.numeric" => "กรอกเฉพาะตัวเลข",
-                //name_bank
-                "name_bank.required" => "กรุณากรอกช่องนี้",
-                "name_bank.min" => "ต้องมีอย่างน้อย2ตัวอักษร",
-                "name_bank.max" => "ต้องมีไม่เกิน255ตัวอักษร",
-                //name_account
-                "name_account.required" => "กรุณากรอกช่องนี้",
-                "name_account.min" => "ต้องมีอย่างน้อย2ตัวอักษร",
-                "name_account.max" => "ต้องมีไม่เกิน255ตัวอักษร",
+                //bank_cus_id
+                "bank_cus_id.required" => "กรุณากรอกช่องนี้",
                 //bank_id
                 "bank_id.required" => "กรุณาเลือกธนาคารที่จะโอน",
                 //money
@@ -55,7 +44,6 @@ class TransferNoticeController extends Controller
             ],
         );
 
-
         //การเข้ารหัสรูปภาพ
         $service_image = $request->file('pic');
         //genarate ชื่อภาพ
@@ -66,17 +54,18 @@ class TransferNoticeController extends Controller
 
         $upload_location = "images/services/receipt/";
         $full_path = $upload_location . $img_name;
-
-
+        // return dd($request->bank_cus_id);
+        $bank_customer = BankCustomer::find($request->bank_cus_id);
         $user = TransferNotice::updateOrCreate(['id' => ""], [
-            "no" => $request->no,
-            "name_account" => $request->name_account,
-            "name_bank" => $request->name_bank,
+            "no" => $bank_customer->no,
+            "name_account" => $bank_customer->name_account,
+            "name_bank" => $bank_customer->name_bank,
             "status" => '0',
             "pic" => $full_path,
             "money" => $request->money,
             "cusm_id" => Auth::guard('customer')->user()->id,
             "bank_id" => $request->bank_id,
+            "bank_cus_id" => $request->bank_cus_id,
         ]);
 
         $service_image->move($upload_location, $img_name);
@@ -109,21 +98,20 @@ class TransferNoticeController extends Controller
                     "name_account" => "required|min:2|max:255",
                     "name_bank" => "required|min:2|max:255"
                 ],
-                // [
-                //     //username
-                //     "username.required" => "กรุณากรอกช่องนี้",
-                //     "username.min" => "ต้องมีอย่างน้อย6ตัวอักษร",
-                //     "username.max" => "ต้องมีไม่เกิน12ตัวอักษร",
-                //     "username.unique" => "ชื่อผู้ใช้นี้ถูกใช้แล้ว",
-                //     //name
-                //     "name.required" => "กรุณากรอกช่องนี้",
-                //     "name.min" => "ต้องมีอย่างน้อย6ตัวอักษร",
-                //     "name.max" => "ต้องมีไม่เกิน255ตัวอักษร",
-                //     //tel
-                //     "tel.min" => "กรุณากรอกเบอร์โทร10หลัก",
-                //     "tel.max" => "กรุณากรอกเบอร์โทร10หลัก",
-                //     "tel.unique" => "เบอร์โทรนี้ถูกใช้แล้ว",
-                // ],
+                [
+                    //no
+                    "no.required" => "กรุณากรอกช่องนี้",
+                    "no.digits" => "ต้องมี10ตัวอักษร",
+                    "no.unique" => "ข้อมูลนี้ถูกใช้แล้ว",
+                    //name_account
+                    "name_account.required" => "กรุณากรอกช่องนี้",
+                    "name_account.min" => "ต้องมีอย่างน้อย2ตัวอักษร",
+                    "name_account.max" => "ต้องมีไม่เกิน255ตัวอักษร",
+                    //name_bank
+                    "name_bank.min" => "ต้องมีอย่างน้อย2ตัวอักษร",
+                    "name_bank.max" => "ต้องมีไม่เกิน255ตัวอักษร",
+                    "name_bank.required" => "กรุณากรอกช่องนี้",
+                ],
             );
         } else {
             $request->validate(
@@ -132,21 +120,20 @@ class TransferNoticeController extends Controller
                     "name_account" => "required|min:2|max:255",
                     "name_bank" => "required|min:2|max:255"
                 ],
-                // [
-                //     //username
-                //     "username.required" => "กรุณากรอกช่องนี้",
-                //     "username.min" => "ต้องมีอย่างน้อย6ตัวอักษร",
-                //     "username.max" => "ต้องมีไม่เกิน12ตัวอักษร",
-                //     "username.unique" => "ชื่อผู้ใช้นี้ถูกใช้แล้ว",
-                //     //name
-                //     "name.required" => "กรุณากรอกช่องนี้",
-                //     "name.min" => "ต้องมีอย่างน้อย6ตัวอักษร",
-                //     "name.max" => "ต้องมีไม่เกิน255ตัวอักษร",
-                //     //tel
-                //     "tel.min" => "กรุณากรอกเบอร์โทร10หลัก",
-                //     "tel.max" => "กรุณากรอกเบอร์โทร10หลัก",
-                //     "tel.unique" => "เบอร์โทรนี้ถูกใช้แล้ว",
-                // ],
+                [
+                    //no
+                    "no.required" => "กรุณากรอกช่องนี้",
+                    "no.digits" => "ต้องมี10ตัวอักษร",
+                    "no.unique" => "ข้อมูลนี้ถูกใช้แล้ว",
+                    //name_account
+                    "name_account.required" => "กรุณากรอกช่องนี้",
+                    "name_account.min" => "ต้องมีอย่างน้อย2ตัวอักษร",
+                    "name_account.max" => "ต้องมีไม่เกิน255ตัวอักษร",
+                    //name_bank
+                    "name_bank.min" => "ต้องมีอย่างน้อย2ตัวอักษร",
+                    "name_bank.max" => "ต้องมีไม่เกิน255ตัวอักษร",
+                    "name_bank.required" => "กรุณากรอกช่องนี้",
+                ],
             );
         }
         $user = BankCustomer::updateOrCreate(['id' => $request->id], [

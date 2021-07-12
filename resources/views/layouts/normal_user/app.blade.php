@@ -110,6 +110,15 @@
     <script src="{{ asset('be_home_template/Upload/js/behome.js') }}"></script>
     <script src="{{ asset('be_home_template/Upload/js/slider.js') }}"></script>
 
+    <!-- Select2 -->
+    <link href="{{asset('select2/select2.min.css')}}" rel="stylesheet" />
+    <script src="{{asset('select2/select2.min.js')}}"></script>
+    <script>
+        // In your Javascript (external .js resource or <script> tag)
+        $(document).ready(function() {
+            $('.select2').select2();
+        });
+    </script>
     <script>
         //อัพโหลดโชวรูปและชื่อ logoคือid inputfile [input id='logo']
         pic.onchange = evt => {

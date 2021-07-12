@@ -23,6 +23,7 @@ class TransferNotice extends Model
         'name_account',
         'no',
         'name_bank',
+        'bank_cus_id',
     ];
 
     public function my_bank(){

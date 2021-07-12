@@ -51,9 +51,7 @@
                             );
                             clearTextAddError();
                             $('#moneyError').text(err.responseJSON.errors.money);
-                            $('#name_accountError').text(err.responseJSON.errors.name_account);
-                            $('#name_bankError').text(err.responseJSON.errors.name_bank);
-                            $('#noError').text(err.responseJSON.errors.no);
+                            $('#bank_cus_idError').text(err.responseJSON.errors.bank_cus_id);
                             $('#bank_idError').text(err.responseJSON.errors.bank_id);
                             $('#picError').text(err.responseJSON.errors.pic);
                         }
@@ -64,9 +62,7 @@
 
         function clearTextAddError() {
             $('#moneyError').text("");
-            $('#name_accountError').text("");
-            $('#name_bankError').text("");
-            $('#noError').text("");
+            $('#bank_cus_idError').text("");
             $('#bank_idError').text("");
             $('#picError').text("");
         }
@@ -78,148 +74,13 @@
         }
     </script>
 
-    <script>
-        function select_all() {
-            $("[id='select_input']").prop('checked', true);
-        }
 
-        function reset_select() {
-            $("[id='select_input']").prop('checked', false);
-
-        }
-
-        function showInputChouse(event) {
-            var btn_chouse = document.getElementById("btn_chouse");
-            var delete_select = document.getElementById("delete_select");
-            var chk = btn_chouse.getAttribute("status");
-            var reset_select = document.getElementById("reset_select");
-            var select_all = document.getElementById("select_all");
-            if (chk == 0) {
-                document.getElementById("th_choese").hidden = false;
-                $("[id='td_choese']").prop('hidden', false);
-                $("[id='th_choese']").prop('hidden', false);
-                $("[id='btn_delete']").prop('hidden', true);
-
-                // console.log("fwf")
-                //ปุ่มยกเลิก
-                btn_chouse.innerHTML = "ยกเลิก";
-                btn_chouse.setAttribute("status", "1");
-                btn_chouse.setAttribute("class", "btn btn-warning");
-                //ปุ้มเพิ่มรรายชื่อ
-
-                //ปุ่มลบทั้งหมด
-                delete_select.hidden = false;
-                //reset
-                reset_select.hidden = false;
-                //เลือกทั้งหมด
-                select_all.hidden = false;
-
-            } else {
-                processBtnCancel();
-            }
-
-            console.log(chk);
-        }
-
-        function processBtnCancel() {
-            var btn_chouse = document.getElementById("btn_chouse");
-            var delete_select = document.getElementById("delete_select");
-            var chk = btn_chouse.getAttribute("status");
-            var reset_select = document.getElementById("reset_select");
-            var select_all = document.getElementById("select_all");
-            document.getElementById("th_choese").hidden = true;
-            $("[id='td_choese']").prop('hidden', true);
-            $("[id='th_choese']").prop('hidden', true);
-            $("[id='btn_delete']").prop('hidden', false);
-
-            //เลือก
-            btn_chouse.innerHTML = "เลือก";
-            btn_chouse.setAttribute("status", "0");
-            btn_chouse.setAttribute("class", "btn btn-info");
-            //ปุ่มลบทั้งหมด
-            delete_select.hidden = true;
-            //reset
-            reset_select.hidden = true;
-            //เลือกทั้งหมด
-            select_all.hidden = true;
-            this.reset_select();
-        }
-
-        function select_delete() {
-            var arr = [];
-            var _url = "{{ route('admin.data.delete.all_bank') }}";
-            let _token = $('meta[name="csrf-token"]').attr('content');
-            $("input:checkbox[name=select]:checked").each(function() {
-                arr.push({
-                    id: $(this).val()
-                });
-            });
-            var filtarr = arr.filter(function(el) {
-                return el != null;
-            });
-            //  console.log(arr);
-
-            if (filtarr.length > 0) {
-                Swal.fire({
-                    title: 'คุณแน่ใจใช่หรือไม่?',
-                    text: "คุณต้องการลบข้อมูลที่เลือกใช่หรือไม่?",
-                    icon: 'question',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'ตกลง!',
-                    cancelButtonText: 'ยกเลิก'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        $.ajax({
-                            type: "post",
-                            url: _url,
-                            data: {
-                                _token: _token,
-                                pass: filtarr,
-                            },
-                            success: function(res) {
-                                console.log("Sucess");
-                                if (res.code == '200') {
-                                    var response = res.data;
-                                    // console.log(response[0].id);
-                                    for (let i = 0; i < response.length; i++) {
-                                        $("#row_" + response[i].id).remove();
-                                        // console.log(response[i].id)
-                                    }
-                                    Swal.fire(
-                                        'สำเร็จ!',
-                                        res.message,
-                                        'success'
-                                    )
-                                }
-                            },
-                            error: function(err) {
-                                Swal.fire(
-                                    'เกิดข้อผิดพลาด!',
-                                    "เกิดข้อผิดพลาดบางอย่าง",
-                                    'error',
-                                )
-                            }
-                        });
-                    }
-                })
-            } else {
-                Swal.fire(
-                    'มีข้อผิดพลาด!',
-                    "คุณยังไม่ได้เลือกรายการ",
-                    'warning'
-                )
-            }
-
-        }
-    </script>
 
 
     <!--
-                                                                                                                                                                                                                                                            ========================================
-                                                                                                                                                                                                                                                                Single Blog Sections
-                                                                                                                                                                                                                                                            ========================================                                                                                           -->
+                                                                                                                                                                                                                                                                                                                    ========================================
+                                                                                                                                                                                                                                                                                                                        Single Blog Sections
+                                                                                                                                                                                                                                                                                                                    ========================================                                                                                           -->
     <section id="single-blog" class="single-blog-layout pa-100">
         <div class="container">
             <div class="row">
@@ -227,20 +88,18 @@
                     <div class="comment-layout">
                         <h4>แจ้งโอน</h4>
                         <p class="text-danger">* กรุณาตรวจสอบให้ดีก่อนกดยืนยัน</p>
+                        <p class="text-success">*ถ้าต้องการ 'เพิ่ม' 'แก้ไข' 'ลบ' ธนาคารของท่านกรุณาเพิ่มที่เมนู
+                            "ธุรกรรมทางการเงิน และไปที่ ธนาคารของฉัน"</p>
                         <form id="tranfer_form">
                             <div class="input-full">
-                                <input name="no" placeholder="เลขที่บัญชี" id="no">
-                                <span id="noError" class="alert-message text-danger"></span>
-                            </div>
-                            <div class="input-full">
-                                <input name="name_account" placeholder="ชื่อบัญชี" id="name_account">
-                                <span id="name_accountError" class="alert-message text-danger"></span>
-
-                            </div>
-                            <div class="input-full">
-                                <input name="name_bank" placeholder="ชื่อธนาคาร" id="name_bank">
-                                <span id="name_bankError" class="alert-message text-danger"></span>
-
+                                <select name="bank_cus_id" id="bank_cus_id" class="form-control select2">
+                                    <option value="" selected disabled>เลือกเลขที่บัญชี</option>
+                                    @foreach ($bank_customers as $bank_customer)
+                                        <option value="{{ $bank_customer->id }}">{{ $bank_customer->name_bank }}
+                                            {{ $bank_customer->no }} {{ $bank_customer->name_account }}</option>
+                                    @endforeach
+                                </select>
+                                <span id="bank_cus_idError" class="alert-message text-danger"></span>
                             </div>
                             <div class="input-full">
                                 <input type="number" name="money" placeholder="จำนวนเงิน" id="money">
@@ -266,7 +125,6 @@
                                         <th scope="col">ชื่อธนาคาร</th>
                                         <th scope="col">เลขที่บัญชี</th>
                                         <th scope="col">เลือก</th>
-
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -462,6 +320,7 @@
             </div>
         </div>
     </section>
+
 
 
 @endsection

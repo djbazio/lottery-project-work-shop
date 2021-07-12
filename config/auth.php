@@ -40,7 +40,6 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
@@ -54,6 +53,11 @@ return [
         'user' => [
             'driver' => 'session',
             'provider' => 'users',
+            // 'hash' => false,
+        ],
+        'branch' => [
+            'driver' => 'session',
+            'provider' => 'branchs',
             // 'hash' => false,
         ],
     ],
@@ -84,6 +88,11 @@ return [
         'customers' => [
             'driver' => 'eloquent',
             'model' => App\Models\Customers::class,
+        ],
+
+        'branchs' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Branch::class,
         ],
 
         // 'users' => [

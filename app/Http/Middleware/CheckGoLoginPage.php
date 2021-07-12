@@ -21,6 +21,8 @@ class CheckGoLoginPage
             return redirect()->back();
         } elseif (Auth::guard('user')->check()) {
             return redirect()->back();
+        } elseif (Auth::guard('branch')->check()) {
+            return redirect()->back();
         } else {
             return $next($request);
         }

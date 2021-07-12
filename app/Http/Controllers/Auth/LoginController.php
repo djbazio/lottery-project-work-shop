@@ -48,6 +48,8 @@ class LoginController extends Controller
             return redirect('/');
         } elseif (Auth::guard('user')->attempt($credential)) {
             return redirect()->route('admin.index');
+        } elseif (Auth::guard('branch')->attempt($credential)) {
+            return redirect()->route('branch.view.home');
         } else {
             return redirect()->route('login')->with('error', 'รหัสหรือชื่อผู้ใช้ไม่ถูกต้อง');
         }
