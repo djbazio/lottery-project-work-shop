@@ -20,12 +20,19 @@ class Branch extends Authenticatable
     protected $fillable = [
         'username',
         'password',
-        'name',
-        'province',
+        'fname',
+        'lname',
+        'address',
+        'tel',
     ];
 
     public function getAuthPassword()
     {
         return $this->password;
+    }
+
+    public function lottery()
+    {
+        return $this->hasMany(Lottery::class,'id');
     }
 }

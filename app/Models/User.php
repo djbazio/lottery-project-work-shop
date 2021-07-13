@@ -44,12 +44,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function lottery()
+    public function confirmation_money()
     {
-        return $this->hasMany(Lottery::class,'id');
-    }
-
-    public function confirmation_money(){
-        return $this->hasMany(ConfirmationMoney::class,'id');
+        return $this->hasMany(ConfirmationMoney::class, 'id');
     }
 }

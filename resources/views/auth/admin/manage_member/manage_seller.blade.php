@@ -1,6 +1,7 @@
 @extends('layouts.main_template')
 @section('content')
-    {{-- <script>
+
+    <script>
         function new_save() {
             $("#post_id").val("");
             createPost();
@@ -18,61 +19,67 @@
                 cancelButtonText: "ยกเลิก"
             }).then((result) => {
                 if (result.isConfirmed) {
-                    var no = "";
-                    var num = "";
-                    var status = "";
-                    var price = "";
-                    var id = $("#post_id").val();
+                    var fname = "";
+                    var lname = "";
+                    var tel = "";
+                    var username = "";
+                    var address = "";
+                    var password = "";
+                    var password_confirmation = "";
+                    // var money = "";
 
+                    var id = $("#post_id").val();
                     if (id == "") {
-                        no = $("#no").val();
-                        num = $("#num").val();
-                        status = $("#status").val();
-                        price = $("#price").val();
+                        fname = $("#fname").val();
+                        lname = $("#lname").val();
+                        tel = $("#tel").val();
+                        username = $("#username").val();
+                        address = $("#address").val();
+                        // money = $("#money").val();
+                        password = $("#password").val();
+                        password_confirmation = $("#password_confirmation").val();
                     } else {
-                        no = $("#eno").val();
-                        num = $("#enum").val();
-                        status = $("#estatus").val();
-                        price = $("#eprice").val();
+                        fname = $("#efname").val();
+                        lname = $("#elname").val();
+                        tel = $("#etel").val();
+                        username = $("#eusername").val();
+                        address = $("#eaddress").val();
+                        // money = $("#emoney").val();
                         // console.log(fname,lname,tel,username,address);
+
                     }
 
-                    let _url = "{{ route('admin.data.lottery.store') }}";
+                    let _url = "{{ route('admin.data.manage.seller.store') }}";
                     let _token = $('meta[name="csrf-token"]').attr('content');
                     $.ajax({
                         url: _url,
                         type: "POST",
                         data: {
                             id: id,
-                            no: no,
-                            num: num,
-                            status: status,
-                            price: price,
+                            fname: fname,
+                            lname: lname,
+                            tel: tel,
+                            username: username,
+                            address: address,
+                            password: password,
+                            // money: money,
+                            password_confirmation: password_confirmation,
                             _token: _token,
                         },
                         success: function(res) {
-                            let status;
-                            if (res.data.status == '0') {
-                                status = "เปิดขาย"
-                            } else {
-                                status = "ไม่เปิดขาย"
-                            }
                             console.log("สำเร็จ");
+
                             if (id != "") {
-                                $("#table_crud #row_" + id + " td:nth-child(3)").html(res.data.no);
+                                $("#table_crud #row_" + id + " td:nth-child(3)").html(res.data.fname +
+                                    " " + res.data.lname);
                                 $("#table_crud #row_" + id + " td:nth-child(4)").html(res.data
-                                    .num);
-                                $("#table_crud #row_" + id + " td:nth-child(5)").html(status);
-                                $("#table_crud #row_" + id + " td:nth-child(6)").html(res.data.price);
-                                $("#table_crud #row_" + id + " td:nth-child(7)").html(res.admin_data
-                                    .fname + " " + res.admin_data.lname);
+                                    .tel);
+                                $("#table_crud #row_" + id + " td:nth-child(5)").html(res.data.address);
+                                $("#table_crud #row_" + id + " td:nth-child(6)").html(res.data
+                                    .username);
+                                // $("#table_crud #row_" + id + " td:nth-child(7)").html(res.data
+                                //     .money+" บาท");
                             } else {
-                                let status;
-                                if (res.data.status == '0') {
-                                    status = "เปิดขาย"
-                                } else {
-                                    status = "ไม่เปิดขาย"
-                                }
                                 $('#table_crud tbody').prepend("<tr align='center' id='row_" + res.data
                                     .id + "'" +
                                     ">" +
@@ -86,13 +93,12 @@
                                     "</th>" +
 
                                     "<td class='align-middle'>" + res.data.id + "</td>" +
-                                    "<td class='align-middle'>" + res.data.no + "</td>" +
-                                    "<td class='align-middle'>" + res.data.num + "</td>" +
-                                    "<td class='align-middle'>" + status + "</td>" +
-                                    "<td class='align-middle'>" + res.data.price + "</td>" +
-                                    "<td class='align-middle'>" + res.admin_data.fname + " " + res
-                                    .admin_data.lname +
-                                    "</td>" +
+                                    "<td class='align-middle'>" + res.data.fname + " " + res.data
+                                    .lname + "</td>" +
+                                    "<td class='align-middle'>" + res.data.tel + "</td>" +
+                                    "<td class='align-middle'>" + res.data.address + "</td>" +
+                                    "<td class='align-middle'>" + res.data.username + "</td>" +
+                                    // "<td class='align-middle'>" + res.data.money + " บาท" + "</td>" +
                                     "<td align='center' class='align-middle'>" +
                                     "<a href='javascript:void(0)' class='btn btn-warning'" +
                                     "data-id='" + res.data.id +
@@ -103,11 +109,16 @@
                                     "</td>" +
                                     "</tr>"
                                 );
-                                $("#no").val('');
-                                $("#num").val('');
-                                $("#price").val('');
+                                $("#fname").val('');
+                                $("#lname").val('');
+                                $("#tel").val('');
+                                $("#username").val('');
+                                $("#address").val('');
+                                $("#password").val('');
+                                // $("#money").val('0');
+                                $("#password_confirmation").val('');
                                 clearTextAddError();
-                                processBtnCancel(); //แก้
+                                processBtnCancel();
                             }
                             Swal.fire(
                                 'สำเร็จ!',
@@ -122,17 +133,25 @@
                             console.log("ไม่สำเร็จ");
                             // console.log(err);
                             if (id == "") {
+
                                 clearTextAddError();
-                                $('#noError').text(err.responseJSON.errors.no);
-                                $('#numError').text(err.responseJSON.errors.num);
-                                $('#statusError').text(err.responseJSON.errors.status);
-                                $('#priceError').text(err.responseJSON.errors.price);
+                                $('#fnameError').text(err.responseJSON.errors.fname);
+                                $('#lnameError').text(err.responseJSON.errors.lname);
+                                $('#usernameError').text(err.responseJSON.errors.username);
+                                $('#passwordError').text(err.responseJSON.errors.password);
+                                $('#telError').text(err.responseJSON.errors.tel);
+                                $('#addressError').text(err.responseJSON.errors.address);
+                                // $('#moneyError').text(err.responseJSON.errors.money);
+                                $('#password_confirmationError').text(err.responseJSON.errors
+                                    .password_confirmation);
                             } else {
                                 clearTextModalError();
-                                $('#enoError').text(err.responseJSON.errors.no);
-                                $('#enumError').text(err.responseJSON.errors.num);
-                                $('#estatusError').text(err.responseJSON.errors.status);
-                                $('#epriceError').text(err.responseJSON.errors.price);
+                                $('#efnameError').text(err.responseJSON.errors.fname);
+                                $('#elnameError').text(err.responseJSON.errors.lname);
+                                $('#eusernameError').text(err.responseJSON.errors.username);
+                                $('#etelError').text(err.responseJSON.errors.tel);
+                                // $('#emoneyError').text(err.responseJSON.errors.money);
+                                $('#eaddressError').text(err.responseJSON.errors.address);
                             }
                         }
                     });
@@ -142,25 +161,31 @@
         }
 
         function clearTextAddError() {
-            $('#noError').text("");
-            $('#numError').text("");
-            $('#statusError').text("");
-            $('#priceError').text("");
+            $('#fnameError').text("");
+            $('#lnameError').text("");
+            $('#usernameError').text("");
+            $('#passwordError').text("");
+            $('#telError').text("");
+            // $('#moneyError').text("");
+            $('#addressError').text("");
+            $('#password_confirmationError').text("");
         }
 
         function clearTextModalError() {
-            $('#enoError').text("");
-            $('#enumError').text("");
-            $('#estatusError').text("");
-            $('#epriceError').text("");
+            $('#efnameError').text("");
+            $('#elnameError').text("");
+            $('#eusernameError').text("");
+            $('#etelError').text("");
+            $('#eaddressError').text("");
+            // $('#emoneyError').text("");
         }
 
         function editPost(event) {
             var id = $(event).data("id");
-            let _url = "/admin/api/getLotteryData/" + id;
+            let _url = "/admin/api/getsellerData/" + id;
             let _token = $('meta[name="csrf-token"]').attr('content');
             clearTextModalError();
-            $("#text_addcus").html("แก้ไขข้อมูลลอตตารี่");
+            $("#text_addcus").html("แก้ไขรายชื่อสาขา");
             $('#post-modal').modal('show');
 
             $.ajax({
@@ -174,10 +199,12 @@
                     // console.log(res);
                     if (res) {
                         $("#post_id").val(res.id);
-                        $("#eno").val(res.no);
-                        $("#enum").val(res.num);
-                        $("#estatus").val(res.status);
-                        $("#eprice").val(res.price);
+                        $("#efname").val(res.fname);
+                        $("#elname").val(res.lname);
+                        $("#etel").val(res.tel);
+                        $("#eusername").val(res.username);
+                        // $("#emoney").val(res.money);
+                        $("#eaddress").val(res.address);
                         // $('#epost-modal').modal('show');
                     }
                 }
@@ -197,7 +224,7 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     var id = $(event).data("id");
-                    let _url = "/admin/data/delete/lottery/" + id;
+                    let _url = "/admin/data/delete/seller/" + id;
                     let _token = $('meta[name="csrf-token"]').attr('content');
 
                     $.ajax({
@@ -298,7 +325,7 @@
 
         function select_delete() {
             var arr = [];
-            var _url = "{{ route('admin.data.delete.all_lottery') }}";
+            var _url = "{{ route('admin.data.delete.all_seller') }}";
             let _token = $('meta[name="csrf-token"]').attr('content');
             $("input:checkbox[name=select]:checked").each(function() {
                 arr.push({
@@ -364,19 +391,19 @@
             }
 
         }
-    </script> --}}
+    </script>
 
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">ข้อมูลสลากทั้งหมด</h1>
+                    <h1 class="m-0">จัดการข้อมูลผู้ขาย</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">หน้าแรก</a></li>
-                        <li class="breadcrumb-item active">ข้อมูลสลากทั้งหมด</li>
+                        <li class="breadcrumb-item active">จัดการข้อมูลผู้ขาย</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -393,9 +420,9 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">ข้อมูลสลาก</h3>
-                            {{-- เปิด --}}
-                            {{-- <div class="card-tools">
+                            <h3 class="card-title">รายชื่อผู้ขาย</h3>
+
+                            <div class="card-tools">
                                 <button class="btn btn-info" status="0" onclick="showInputChouse(event)"
                                     id="btn_chouse">เลือก</button>
                                 <a href="javascript:void(0)" class="btn btn-success" hidden="true" id="select_all"
@@ -404,7 +431,7 @@
                                     onclick="reset_select()">รีเซต</a>
                                 <a href="javascript:void(0)" class="btn btn-danger" hidden="true" id="delete_select"
                                     onclick="select_delete()">ลบข้อมูลที่เลือก</a>
-                                 <div class="input-group input-group-sm" style="width: 150px;">
+                                {{-- <div class="input-group input-group-sm" style="width: 150px;">
                                     <input type="text" name="table_search" class="form-control float-right"
                                         placeholder="Search">
 
@@ -413,10 +440,8 @@
                                             <i class="fas fa-search"></i>
                                         </button>
                                     </div>
-                                </div>
-                            </div> --}}
-                            {{-- ปิด --}}
-
+                                </div> --}}
+                            </div>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body table-responsive p-0" style="height: 300px;">
@@ -425,62 +450,42 @@
                                     <tr align="center">
                                         <th id="th_choese" hidden>เลือก</th>
                                         <th>ID</th>
-                                        <th>เลขลอตเตอรี่</th>
-                                        <th>ชุดที่</th>
-                                        <th>เล่มที่</th>
-                                        <th>จำนวน</th>
-                                        <th>สถานะ</th>
-                                        <th>ราคา</th>
-                                        <th>สาขา</th>
-                                        {{-- <th>อื่นๆ</th> --}}
+                                        <th>ชื่อ-สกุล</th>
+                                        <th>เบอร์โทร</th>
+                                        <th>ที่อยู่</th>
+                                        <th>ชื่อผู้ใช้</th>
+                                        <th>อื่นๆ</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($lotteries as $lottery)
-                                        <tr id="row_{{ $lottery->id }}" align="center">
+                                    @foreach ($sellers as $seller)
+                                        <tr id="row_{{ $seller->id }}" align="center">
                                             <th id="td_choese" class="align-middle" hidden>
                                                 <div align="center">
                                                     <input type="checkbox" class="form-check" name="select"
-                                                        id="select_input" value="{{ $lottery->id }}">
+                                                        id="select_input" value="{{ $seller->id }}">
                                                 </div>
                                             </th>
-                                            <td class="align-middle">{{ $lottery->id }}</td>
-                                            <td class="align-middle">{{ $lottery->no }}</td>
-                                            <td class="align-middle">{{ $lottery->set }}</td>
-                                            <td class="align-middle">{{ $lottery->volume }}</td>
-                                            <td class="align-middle">{{ $lottery->num }}</td>
-                                            <td class="align-middle">
-                                                @if ($lottery->status == '0')
-                                                    เปิดขาย
-                                                @else
-                                                    ไม่เปิดขาย
-                                                @endif
-                                            </td>
-                                            <td class="align-middle">{{ $lottery->price }}</td>
-                                            <td class="align-middle">
-                                                @if ($lottery->branch != null)
-                                                    {{ $lottery->branch->fname }}
-                                                    {{ $lottery->branch->lname }}
-                                                @else
-                                                    ไม่มีข้อมูล
-                                                @endif
-                                            </td>
-{{-- เปิด --}}
-                                            {{-- <td class="align-middle" align="center">
+                                            <td class="align-middle">{{ $seller->id }}</td>
+                                            <td class="align-middle">{{ $seller->fname }} {{ $seller->lname }}</td>
+                                            <td class="align-middle">{{ $seller->tel }}</td>
+                                            <td class="align-middle">{{ $seller->address }}</td>
+                                            <td class="align-middle">{{ $seller->username }}</td>
+                                            <td class="align-middle" align="center">
                                                 <a href="javascript:void(0)" class="btn btn-warning"
-                                                    data-id="{{ $lottery->id }}" onclick="editPost(event.target)"
+                                                    data-id="{{ $seller->id }}" onclick="editPost(event.target)"
                                                     id='btn_edit'>แก้ไข</a>
                                                 <a href="javascript:void(0)" class="btn btn-danger"
-                                                    data-id="{{ $lottery->id }}" onclick="deletePost(event.target)"
+                                                    data-id="{{ $seller->id }}" onclick="deletePost(event.target)"
                                                     id='btn_delete'>ลบ</a>
-                                            </td> --}}
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
                             </table>
                         </div>
                         <div class="d-flex justify-content-center">
-                            {!! $lotteries->links() !!}
+                            {!! $sellers->links() !!}
                         </div>
                         <!-- /.card-body -->
                     </div>
@@ -489,59 +494,90 @@
             </div>
             <!-- /.row -->
 
-            {{-- เปิด --}}
-            {{-- <div class="card card-primary">
+            <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">เพิ่มข้อมูลลอตเตอรี่</h3>
+                    <h3 class="card-title">เพิ่มข้อมูลผู้ขาย</h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-
                 <form>
+
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="no">เลขลอตเตอรี่</label>
-                                    <input type="number" class="form-control" id="no" name="no"
-                                        placeholder="โปรดกรอกข้อมูลที่เป็นตัวเลข">
-                                    <span id="noError" class="alert-message text-danger"></span>
+                                    <label for="username">ชื่อผู้ใช้</label>
+                                    <input type="text" class="form-control" id="username" name="username"
+                                        placeholder="โปรดกรอกข้อมูลชื่อผู้ใช้ 6-12 หลัก เช่น wutza001">
+                                    <span id="usernameError" class="alert-message text-danger"></span>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="price">ราคา</label>
-                                    <input type="number" class="form-control" id="price" name="price"
-                                        placeholder="โปรดกรอกข้อมูลที่เป็นตัวเลข">
-                                    <span id="priceError" class="alert-message text-danger"></span>
+                                    <label for="password">รหัสผ่าน</label>
+                                    <input type="password" class="form-control" id="password" name="password"
+                                        placeholder="โปรดกรอกรหัสผ่าน 6-20 หลัก">
+                                    <span id="passwordError" class="alert-message text-danger"></span>
+
                                 </div>
                             </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password_confirmation">ยืนยันรหัสผ่าน</label>
+                            <input type="password" class="form-control" name="password_confirmation"
+                                id="password_confirmation" placeholder="ยืนยันรหัสผ่านด้านบน">
+                            <span id="password_confirmationError" class="alert-message text-danger"></span>
+
                         </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="num">จำนวน</label>
-                                    <input type="number" class="form-control" name="num" id="num"
-                                        placeholder="โปรดกรอกข้อมูลที่เป็นตัวเลข">
-                                    <span id="numError" class="alert-message text-danger"></span>
+                                    <label for="fname">ชื่อแรก</label>
+                                    <input type="text" class="form-control" id="fname"
+                                        placeholder="กรุณากรอกชื่อ เช่น ณัฐวุด" name="fname">
+                                    <span id="fnameError" class="alert-message text-danger"></span>
+
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="status">สถานะ</label>
-                                    <select class="form-control" id="status" name="status">
-                                        <option value="" disabled selected>เลือกสถานะ</option>
-                                        <option value="0">เปิดขาย</option>
-                                        <option value="1">ไม่เปิดขาย</option>
-                                    </select>
-                                    <span id="statusError" class="alert-message text-danger"></span>
+                                    <label for="lname">นามสกุล</label>
+                                    <input type="text" class="form-control" id="lname"
+                                        placeholder="กรูณากรอกนามสกุล เช่น ศรีระว้า" name="lname">
+                                    <span id="lnameError" class="alert-message text-danger"></span>
+
                                 </div>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="tel">เบอร์โทร</label>
+                                    <input type="number" class="form-control" id="tel"
+                                        placeholder="กรุณากรอกเบอร์ เช่น 0981546231" name="tel">
+                                    <span id="telError" class="alert-message text-danger"></span>
 
+                                </div>
+                            </div>
+                            {{-- <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="money">จำนวนเงิน (ค่าเริ่มต้น)</label>
+                                    <input type="number" class="form-control" id="money"
+                                        placeholder="กรุณากรอกราคาที่ไม่มีอักษรพิเศษ" name="money" value="0">
+                                    <span id="moneyError" class="alert-message text-danger"></span>
+                                </div>
+                            </div> --}}
+                        </div>
+                        <div class="form-group">
+                            <label for="address">ที่อยู่</label>
+                            <textarea name="address" class="form-control" id="address" cols="30" rows="10"
+                                placeholder="กรุณากรอกที่อยู่ เช่น พช.3017 ตำบล ยางสาว อำเภอวิเชียรบุรี เพชรบูรณ์ 67130"></textarea>
+                            <span id="addressError" class="alert-message text-danger"></span>
 
-                         <div class="form-group">
-                            <label for="exampleInputFile">File input ไม่ได้ใช้</label>
+                        </div>
+                        {{-- <div class="form-group">
+                            <label for="exampleInputFile">File input</label>
                             <div class="input-group">
                                 <div class="custom-file">
                                     <input type="file" class="custom-file-input" id="exampleInputFile">
@@ -551,7 +587,7 @@
                                     <span class="input-group-text">Upload</span>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                     <!-- /.card-body -->
 
@@ -559,7 +595,7 @@
                         <button type="button" class="btn btn-primary" onclick="new_save()">บันทึก</button>
                     </div>
                 </form>
-            </div> --}}
+            </div>
             <!-- /.card -->
 
         </div>
@@ -575,34 +611,53 @@
                     <form name="userForm" class="form-horizontal">
                         <input type="hidden" name="post_id" id="post_id" value="">
                         <div class="form-group">
-                            <label for="eno">เลขลอตเตอรี่</label>
-                            <input type="number" class="form-control" id="eno" name="no"
-                                placeholder="โปรดกรอกข้อมูลที่เป็นตัวเลข">
-                            <span id="enoError" class="alert-message text-danger"></span>
+                            <label for="efname">ชื่อแรก</label>
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control" id="efname" name="fname"
+                                    placeholder="กรุณากรอกชื่อ เช่น ณัฐวุด">
+                                <span id="efnameError" class="alert-message text-danger"></span>
+                            </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="eprice">ราคา</label>
-                            <input type="number" class="form-control" id="eprice" name="price"
-                                placeholder="โปรดกรอกข้อมูลที่เป็นตัวเลข">
-                            <span id="epriceError" class="alert-message text-danger"></span>
+                            <label for="elname">นามสกุล</label>
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control" id="elname" name="lname"
+                                    placeholder="กรูณากรอกนามสกุล เช่น ศรีระว้า">
+                                <span id="elnameError" class="alert-message text-danger"></span>
+                            </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="enum">จำนวน</label>
-                            <input type="number" class="form-control" name="num" id="enum"
-                                placeholder="โปรดกรอกข้อมูลที่เป็นตัวเลข">
-                            <span id="enumError" class="alert-message text-danger"></span>
+                            <label for="eusername">ชื่อผู้ใช้</label>
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control" id="eusername" name="username"
+                                    placeholder="โปรดกรอกข้อมูลชื่อผู้ใช้ 6-12 หลัก เช่น wutza001">
+                                <span id="eusernameError" class="alert-message text-danger"></span>
+                            </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="estatus">สถานะ</label>
-                            <select class="form-control" id="estatus" name="status">
-                                <option value="" disabled selected>เลือกสถานะ</option>
-                                <option value="0">เปิดขาย</option>
-                                <option value="1">ไม่เปิดขาย</option>
-                            </select>
-                            <span id="estatusError" class="alert-message text-danger"></span>
+                            <label for="etel">เบอร์โทรศัพท์</label>
+                            <div class="col-sm-12">
+                                <input type="number" class="form-control" id="etel" name="tel"
+                                    placeholder="กรุณากรอกเบอร์ เช่น 0981546231">
+                                <span id="etelError" class="alert-message text-danger"></span>
+                            </div>
+                        </div>
+                        {{-- <div class="form-group">
+                            <label for="emoney">จำนวนเงิน (ค่าเริ่มต้น)</label>
+                            <input type="number" class="form-control" id="emoney"
+                                placeholder="กรุณากรอกราคาที่ไม่มีอักษรพิเศษ" name="money">
+                            <span id="emoneyError" class="alert-message text-danger"></span>
+                        </div> --}}
+                        <div class="form-group">
+                            <label for="eaddress">ที่อยู่</label>
+                            <div class="col-sm-12">
+                                <textarea name="address" class="form-control" id="eaddress" cols="30" rows="5"
+                                    placeholder="กรุณากรอกที่อยู่ เช่น พช.3017 ตำบล ยางสาว อำเภอวิเชียรบุรี เพชรบูรณ์ 67130"></textarea>
+                                <span id="eaddressError" class="alert-message text-danger"></span>
+                            </div>
                         </div>
                     </form>
                 </div>

@@ -19,11 +19,13 @@ class Lottery extends Model
         'num',
         'price',
         'status',
-        'user_id',
+        'bran_id',
+        'set',
+        'volume',
     ];
 
-    public function users()
+    public function branch()
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(Branch::class,'bran_id');
     }
 }

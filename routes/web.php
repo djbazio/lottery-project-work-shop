@@ -6,6 +6,8 @@ use App\Http\Controllers\Admin\ManageData\MgBankController;
 use App\Http\Controllers\Admin\ManageData\MgCusController;
 use App\Http\Controllers\Admin\ManageData\MgLotteryController;
 use App\Http\Controllers\Admin\ManageData\MgWebsiteController;
+use App\Http\Controllers\Admin\ManageMember\BranchController;
+use App\Http\Controllers\Admin\ManageMember\SellerController;
 use App\Http\Controllers\Branch\BranchHomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Customer\CustomerController;
@@ -111,6 +113,21 @@ Route::middleware(['dont_back'])->group(function () {
         Route::get('admin/view/viewHistoryConfirmationMoney', [ConfirmationMoneyController::class, 'view_history'])->name('admin.view.viewHistoryConfirmationMoney');
         //1.3 รายการโอนเงิน
         Route::get('admin/view/viewHistoryTransfer_notice', [ConfirmationMoneyController::class, 'view_history_transfer_notice'])->name('admin.view.viewHistoryTransfer_notice');
+
+        //1.ข้อมูลสมาชิก
+        //1.1 สาขาย่อย
+        Route::get('admin/view/view_manage_branch', [BranchController::class, 'index'])->name('admin.view.view_manage_branch');
+        Route::post('admin/data/manage/branch/store', [BranchController::class, 'store'])->name('admin.data.manage.branch.store');
+        Route::post('admin/api/getbranchData/{id}', [BranchController::class, 'get_branch_data']);
+        Route::delete('admin/data/delete/branch/{id}', [BranchController::class, 'delete_branch']);
+        Route::post('admin/data/delete/all_branch', [BranchController::class, 'delete_all_branch'])->name('admin.data.delete.all_branch');
+        //1.2ผู้ขาย
+        Route::get('admin/view/view_manage_seller', [SellerController::class, 'index'])->name('admin.view.view_manage_seller');
+        Route::post('admin/data/manage/seller/store', [SellerController::class, 'store'])->name('admin.data.manage.seller.store');
+        Route::post('admin/api/getsellerData/{id}', [SellerController::class, 'get_seller_data']);
+        Route::delete('admin/data/delete/seller/{id}', [SellerController::class, 'delete_seller']);
+        Route::post('admin/data/delete/all_seller', [SellerController::class, 'delete_all_seller'])->name('admin.data.delete.all_seller');
+
     });
 
     Route::middleware(['auth:branch'])->group(function () {
