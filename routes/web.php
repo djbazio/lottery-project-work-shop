@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\ManageData\MgWebsiteController;
 use App\Http\Controllers\Admin\ManageMember\BranchController;
 use App\Http\Controllers\Admin\ManageMember\SellerController;
 use App\Http\Controllers\Branch\BranchHomeController;
+use App\Http\Controllers\Branch\ManageLottery\ManageLotteryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Customer\CustomerController;
 use App\Http\Controllers\Customer\TransferNotice\TransferNoticeController;
@@ -127,10 +128,11 @@ Route::middleware(['dont_back'])->group(function () {
         Route::post('admin/api/getsellerData/{id}', [SellerController::class, 'get_seller_data']);
         Route::delete('admin/data/delete/seller/{id}', [SellerController::class, 'delete_seller']);
         Route::post('admin/data/delete/all_seller', [SellerController::class, 'delete_all_seller'])->name('admin.data.delete.all_seller');
-
     });
 
     Route::middleware(['auth:branch'])->group(function () {
         Route::get('branch/view/home', [BranchHomeController::class, 'index'])->name('branch.view.home');
+        //1.1ข้อมูลสลาก
+        Route::get('branch/lottery/view/home', [ManageLotteryController::class, 'index'])->name('branch.lottery.view.home');
     });
 });

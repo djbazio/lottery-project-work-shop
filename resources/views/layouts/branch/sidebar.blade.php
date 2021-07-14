@@ -1,7 +1,7 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="{{ route('admin.index') }}" class="brand-link">
+    <a href="{{ route('branch.view.home') }}" class="brand-link">
         <!--<img src="{{ asset('adminlte/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">-->
         <i class="fas fa-laptop-code fa-1x"></i>
@@ -31,7 +31,7 @@
                                                                                                with font-awesome or any other icon font library -->
                     <li class="nav-header">หน้าแรก</li>
                     <li class="nav-item">
-                        <a href="{{ route('admin.index') }}"
+                        <a href="{{ route('branch.view.home') }}"
                             class="nav-link {{ Request::routeIs('branch.view.home') ? 'active' : '' }}">
                             <i class="nav-icon fas fa-home"></i>
                             <p>
@@ -43,8 +43,8 @@
 
                     <li class="nav-header">เกี่ยวกับสลาก</li>
                     <li class="nav-item">
-                        <a href="{{ route('admin.index') }}"
-                            class="nav-link {{ Request::routeIs('admin.add') ? 'active' : '' }}">
+                        <a href="{{ route('branch.lottery.view.home') }}"
+                            class="nav-link {{ Request::routeIs('branch.lottery.view.home') ? 'active' : '' }}">
                             <i class="nav-icon fas fa-home"></i>
                             <p>
                                 ข้อมูลสลาก

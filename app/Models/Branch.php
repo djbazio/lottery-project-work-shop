@@ -33,6 +33,11 @@ class Branch extends Authenticatable
 
     public function lottery()
     {
-        return $this->hasMany(Lottery::class,'id');
+        return $this->hasMany(Lottery::class, 'id');
+    }
+
+    public function consignment()
+    {
+        return $this->hasMany(Consignment::class, 'id');
     }
 }

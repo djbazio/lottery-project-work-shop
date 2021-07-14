@@ -22,4 +22,9 @@ class Seller extends Model
         'address',
         'tel',
     ];
+
+    public function consignment()
+    {
+        return $this->hasMany(Consignment::class, 'id');
+    }
 }

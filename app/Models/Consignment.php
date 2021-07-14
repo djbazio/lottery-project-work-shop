@@ -5,9 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Lottery extends Model
+class Consignment extends Model
 {
     use HasFactory;
+
 
     /**
      * The attributes that are mass assignable.
@@ -15,22 +16,25 @@ class Lottery extends Model
      * @var array
      */
     protected $fillable = [
-        'no',
-        'num',
-        'price',
-        'status',
+        'seller_id',
         'bran_id',
-        'set',
-        'volume',
+        'lottery_id',
+        'num',
+        'con_id',
     ];
 
-    public function branch()
+    public function branches()
     {
         return $this->belongsTo(Branch::class, 'bran_id');
     }
 
-    public function consignment()
+    public function seller()
     {
-        return $this->hasMany(Consignment::class, 'id');
+        return $this->belongsTo(Seller::class, 'seller_id');
+    }
+
+    public function lottery()
+    {
+        return $this->belongsTo(Lottery::class,'lottery_id');
     }
 }
